@@ -5,12 +5,16 @@ Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	4
+Release:	8
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	MIT
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
-Patch0:		Xaw3d-glibc.patch
+Patch0:		%{name}-glibc.patch
+Patch1:		%{name}-shlib.patch
+Patch2:		%{name}.patch
+Patch3:		%{name}-static.patch
+Patch4:		%{name}-ia64.patch
 Prereq:		fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -112,7 +116,11 @@ Ten pakiet zawiera biblioteki statyczne dla Xaw3d.
 
 %prep
 %setup -q -c
-%patch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export PATH=/usr/X11R6/bin:$PATH
@@ -135,7 +143,7 @@ mv    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
       $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
-strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
