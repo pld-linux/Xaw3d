@@ -217,9 +217,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}/X11
 
 cd xc/lib/Xaw3d
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
+mv -f $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
       $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
