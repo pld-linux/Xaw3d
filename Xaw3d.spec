@@ -12,14 +12,15 @@ Version:	1.5E
 Release:	3
 License:	MIT
 Group:		X11/Libraries
-Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
-# Source0-md5: 29ecfdcd6bcf47f62ecfd672d31269a1
+Source0:	ftp://ftp.visi.com/users/hawkeyd/X/%{name}-%{version}.tar.gz
+# Source0-md5:	29ecfdcd6bcf47f62ecfd672d31269a1
 Patch0:		%{name}-glibc.patch
 Patch1:		%{name}.patch
 Patch2:		%{name}-static.patch
 Patch3:		%{name}-ia64.patch
 Patch4:		%{name}-i18n.patch
 Patch5:		%{name}-arrowscroll.patch
+URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	XFree86-devel
 PreReq:		fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -210,6 +211,7 @@ cd xc/lib/Xaw3d
 xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
 %{__make} \
+	CC="%{__cc}" \
 	CDEBUGFLAGS="%{rpmcflags}" \
 	CXXDEBUGFLAGS="%{rpmcflags}" \
 	EXTRA_INCLUDES=-I.
