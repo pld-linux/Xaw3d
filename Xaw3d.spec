@@ -1,17 +1,22 @@
 Summary:	A version of the MIT Athena widget set for X
 Summary(de):	3D-Version des MIT Athena-Widgetsatzes fuer X
+Summary(es):	Widgets X athena en 3D
 Summary(fr):	Widgets X Athena en 3D
 Summary(pl):	Biblioteka X athena widgets (wersja 3D)
+Summary(pt_BR):	Widgets X athena em 3d
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	11
+Release:	12
 License:	MIT
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
 Patch0:		%{name}-glibc.patch
 Patch1:		%{name}-shlib.patch
@@ -33,6 +38,11 @@ Xaw3d ist eine erweiterte Version des MIT Athena Widget Set für X
 Windows, das die Anwendung dreidimensional erscheinen läßt, ohne daß
 umfangreiche Änderungen am Quellcode notwendig sind.
 
+%description -l es
+Xaw3d es una versión incrementada del conjunto MIT Athena Widget para
+X Window que adiciona una apariencia tridimensional a las aplicaciones
+con cambios mínimos, o ninguno, en los códigos fuente.
+
 %description -l fr
 Xaw3d est une version améliorée de l'ensemble Athena Widget du MIT
 pour X Window qui ajoute un aspect 3D aux applications avec peu, ou
@@ -43,6 +53,11 @@ Xaw3d jest ulepszon± wersj± biblioteki X Athena Widget, która dodaje
 trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych)
 zmianach kodu ¼ród³owego.
 
+%description -l pt_BR
+Xaw3d é uma versão incrementada do conjunto MIT Athena Widget para X
+Window que adiciona uma aparência tri-dimensional às aplicações com
+mudanças mínimas ou nenhuma nos códigos fonte.
+
 %description -l tr
 Xaw3d, MIT Athena kitaplýðýna, uygulamalara herhangi bir kod
 deðiþikliði yapýlmasýný gerektirmeden (ya da ufak deðiþiklikler
@@ -51,14 +66,19 @@ yaparak), üç boyutlu bir görüntü kazandýran bir geliþtirmedir.
 %package devel
 Summary:	Files for developing programs that use Xaw3d
 Summary(de):	Header und statische Libraries fuer Xaw3d-Entwicklung
+Summary(es):	Archivos para desarrollo de programas que usan Xaw3d
 Summary(fr):	Fichiers pour développer des programmes utilisant Xaw3d
 Summary(pl):	Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
+Summary(pt_BR):	Arquivos para desenvolvimento de programas que usam Xaw3d
 Summary(tr):	Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 
 %description devel
@@ -76,6 +96,13 @@ X-Windows, das einer Applikationen mit minimalen oder keinen
 Headerdateien zur Entwicklung von Programmen, die die Vorteile von
 Xaw3d voll nutzen.
 
+%description -l es devel
+Xaw3d es una versión incrementada del conjunto MIT Athena Widget para
+X Window que adiciona una visión tridimensional a las aplicaciones con
+cambios mínimos, o ninguno, en los códigos fuente. Este paquete
+incluye los archivos principales y las bibliotecas para programas de
+desarrollo que utilizan total ventaja de las características de Xaw3d.
+
 %description -l fr devel
 Xaw3d est une version améliorée de l'ensemble Athena Widget du MIT
 pour X Window qui ajoute un aspect 3D aux applications avec peu, ou
@@ -91,14 +118,26 @@ zmianach kodu ¼ród³owego.
 Ten pakiet zawiera pliki nag³ówkowe potrzebne do kompilacji programów
 wykorzystuj±cych Xaw3d.
 
+%description -l pt_BR devel
+Xaw3d é uma versão incrementada do conjunto MIT Athena Widget para X
+Window que adiciona uma visão tri-dimensional às aplicações com
+mudanças mínimas ou nenhuma nos códigos fonte. Este pacote inclui os
+arquivos principais e as bibliotecas para programas de desenvolvimento
+que utilizam total vantagem das características de Xaw3d.
+
 %package static
 Summary:	Xaw3d static library
+Summary(es):	Static libraries for Xaw3d development
 Summary(pl):	Biblioteki statyczne Xaw3d
+Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com Xaw3d
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
+Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -122,6 +161,9 @@ trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych)
 zmianach kodu ¼ród³owego.
 
 Ten pakiet zawiera biblioteki statyczne dla Xaw3d.
+
+%description -l pt_BR static
+Bibliotecas estáticas para desenvolvimento com Xaw3d.
 
 %prep
 %setup -q -c
