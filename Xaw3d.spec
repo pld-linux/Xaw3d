@@ -149,7 +149,7 @@ Widget для X Window, придающая приложениям "трехмерный" вид с
 
 %package static
 Summary:	Xaw3d static library
-Summary(es):	Static libraries for Xaw3d development
+Summary(es):	Bibliotecas estАticas para el desarrollo con Xaw3d
 Summary(pl):	Biblioteki statyczne Xaw3d
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com Xaw3d
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки програм, як╕ використовують Xaw3d
