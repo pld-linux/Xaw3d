@@ -9,7 +9,7 @@ Summary(tr):	3D X Athena arayЭz elemanlarЩ (widgets)
 Summary(uk):	Верс╕я MIT Athena widget set для X
 Name:		Xaw3d
 Version:	1.5E
-Release:	2
+Release:	3
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ Patch1:		%{name}.patch
 Patch2:		%{name}-static.patch
 Patch3:		%{name}-ia64.patch
 Patch4:		%{name}-i18n.patch
+Patch5:		%{name}-arrowscroll.patch
 BuildRequires:	XFree86-devel
 PreReq:		fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -201,6 +202,7 @@ Widget для X Window, придающая приложениям "трехмерный" вид с
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5
 
 %build
 export PATH=%{_bindir}:$PATH
