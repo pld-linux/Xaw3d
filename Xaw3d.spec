@@ -1,5 +1,5 @@
-Summary:	X athena widgets in 3D
-Summary(de):	X-Athena-Widgets in 3D 
+Summary:	A version of the MIT Athena widget set for X
+Summary(de):	3D-Version des MIT Athena-Widgetsatzes fuer X
 Summary(fr):	Widgets X Athena en 3D
 Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
@@ -48,7 +48,7 @@ yaparak), üç boyutlu bir görüntü kazandýran bir geliþtirmedir.
 
 %package devel
 Summary:	Files for developing programs that use Xaw3d
-Summary(de):	Dateien zur Entwicklung von Programmen, die Xaw3d benutzen 
+Summary(de):	Header und statische Libraries fuer Xaw3d-Entwicklung
 Summary(fr):	Fichiers pour développer des programmes utilisant Xaw3d
 Summary(pl):	Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
 Summary(tr):	Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
