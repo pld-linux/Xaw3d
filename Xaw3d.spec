@@ -1,18 +1,19 @@
-Summary:     X athena widgets in 3d
-Summary(de): X-Athena-Widgets in 3D 
-Summary(fr): Widgets X Athena en 3D
-Summary(pl): Biblioteka X athena widgets (wersja 3D)
-Summary(tr): 3D X Athena arayüz elemanlarý (widgets)
-Name:        Xaw3d
-Version:     1.5
-Release:     2
-Group:       X11/Libraries
-Copyright:   MIT
-Source:      ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
-Patch0:      Xaw3d-1.3-glibc.patch
-URL:         ftp://ftp.x.org/contrib/widgets/Xaw3d/
-Prereq:      fileutils
-BuildRoot:   /tmp/%{name}-%{version}-root
+Summary:	X athena widgets in 3d
+Summary(de):	X-Athena-Widgets in 3D 
+Summary(fr):	Widgets X Athena en 3D
+Summary(pl):	Biblioteka X athena widgets (wersja 3D)
+Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
+Name:		Xaw3d
+Version:	1.5
+Release:	2
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Copyright:	MIT
+Source:		ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
+Patch0:		Xaw3d-1.3-glibc.patch
+URL:		ftp://ftp.x.org/contrib/widgets/Xaw3d/
+Prereq:		fileutils
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
@@ -34,6 +35,11 @@ Xaw3d, MIT Athena kitaplýðýna, uygulamalara herhangi bir kod deðiþikliði
 yapýlmasýný gerektirmeden (ya da ufak deðiþiklikler yaparak), üç boyutlu
 bir görüntü kazandýran bir geliþtirmedir.
 
+%description -l pl
+Xaw3d jest ulepszon± wersj± biblioteki X Athena Widget, która dodaje
+trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych) zmianach
+kodu ¼ród³owego.
+
 %package devel
 Summary:     Files for developing programs that use Xaw3d
 Summary(de): Dateien zur Entwicklung von Programmen, die Xaw3d benutzen 
@@ -43,10 +49,12 @@ Group:       X11/Libraries
 Requires:    %{name} = %{version}
 
 %description devel
-Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows that
-adds a 3-dimensional look to the applications with minimal or no source code
-changes. This package includes the header files developing programs that
-take full advantage of Xaw3d's features.
+Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
+that adds a 3-dimensional look to the applications with minimal or no
+source code changes.
+
+This package includes the header files developing programs that take full
+advantage of Xaw3d's features.
 
 %description -l de devel
 Xaw3d ist eine erweiterte Version des MIT-Athena Widget-Sets für X-Windows,
@@ -56,9 +64,18 @@ von Programmen, die die Vorteile von Xaw3d voll nutzen.
 
 %description -l fr devel
 Xaw3d est une version améliorée de l'ensemble Athena Widget du MIT pour X
-Window qui ajoute un aspect 3D aux applications avec peu, ou pas du tout, de
-modification du code. Ce paquetage contient les en-têtes pour développer des
-programmes tirant plein avantage des caractéristiques de Xaw3d
+Window qui ajoute un aspect 3D aux applications avec peu, ou pas du tout,
+de modification du code. Ce paquetage contient les en-têtes pour
+développer des programmes tirant plein avantage des caractéristiques de
+Xaw3d.
+
+%description -l pl devel
+Xaw3d jest ulepszon± wersj± biblioteki X Athena Widget, która dodaje
+trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych) zmianach
+kodu ¼ród³owego.
+
+Ten pakiet zawiera pliki nag³ówkowe potrzebne do kompilacji programów
+wykorzystuj±cych Xaw3d.
 
 %package static
 Summary:     Xaw3d static library
@@ -66,16 +83,25 @@ Group:       X11/Libraries
 Requires:    %{name}-devel = %{version}
 
 %description static
-Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows that
-adds a 3-dimensional look to the applications with minimal or no source code
-changes. This package includes the static library for developing programs
-that take full advantage of Xaw3d's features.
+Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
+that adds a 3-dimensional look to the applications with minimal or no
+source code changes.
+
+This package includes the static library for developing programs that take
+full advantage of Xaw3d's features.
 
 %description -l de static
 Xaw3d ist eine erweiterte Version des MIT-Athena Widget-Sets für X-Windows, 
 das einer Applikationen mit minimalen oder keinen Änderungen am Quellcode
 einen 3D-Look verleiht. Das Paket enthält die statischen Library zur
 Entwicklung von Programmen, die die Vorteile von Xaw3d voll nutzen.
+
+%description -l pl static
+Xaw3d jest ulepszon± wersj± biblioteki X Athena Widget, która dodaje
+trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych) zmianach
+kodu ¼ród³owego.
+
+Ten pakiet zawiera biblioteki statyczne dla Xaw3d.
 
 %prep
 %setup -q -c
@@ -120,6 +146,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/X11R6/lib/*.a
 
 %changelog
+* Sat Jan 23 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+- added pl translation
+
 * Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.5-2]
 - fixed compiling Xaw3d on system without installled Xaw3d-devel.
