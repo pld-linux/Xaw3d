@@ -225,13 +225,13 @@ cd xc/lib/Xaw3d
 	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
-      $RPM_BUILD_ROOT%{_includedir}/Xaw3d
+	$RPM_BUILD_ROOT%{_includedir}/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %triggerpostun devel -- Xaw3d-devel < 1.5-5
