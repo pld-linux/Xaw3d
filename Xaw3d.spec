@@ -133,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed dependencies to "Requires: %%{name} = %%{version}" in devel
   subpackage,
 - added using $RPM_OPT_FLAGS during compile,
-- added striping shared libraries,
+- added stripping shared libraries,
 - added %attr and %defattr macros in %files (allow build package from
   non-root account).
 
