@@ -1,0 +1,11 @@
+--- xc/lib/Xaw3d/Imakefile.orig	Tue Sep 30 17:08:56 2003
++++ xc/lib/Xaw3d/Imakefile	Tue Sep 30 17:09:11 2003
+@@ -9,7 +9,7 @@
+ XCOMM For grayed stipple shadows, define GRAY_BLKWHT_STIPPLES:
+ #define GRAY_BLKWHT_STIPPLES
+ XCOMM For scrollbars with arrows, define ARROW_SCROLLBARS:
+-#undef ARROW_SCROLLBARS
++#define ARROW_SCROLLBARS
+ 
+ #undef ForceNormalLib
+ #define ForceNormalLib YES
