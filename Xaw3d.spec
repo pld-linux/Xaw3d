@@ -5,12 +5,12 @@ Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	2
+Release:	3
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	MIT
 Source:		ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
-Patch0:		Xaw3d-1.3-glibc.patch
+Patch:		Xaw3d-1.3-glibc.patch
 URL:		ftp://ftp.x.org/contrib/widgets/Xaw3d/
 Prereq:		fileutils
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -44,8 +44,10 @@ kodu ¼ród³owego.
 Summary:     Files for developing programs that use Xaw3d
 Summary(de): Dateien zur Entwicklung von Programmen, die Xaw3d benutzen 
 Summary(fr): Fichiers pour développer des programmes utilisant Xaw3d
+Summary(pl): Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
 Summary(tr): Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
 Group:       X11/Libraries
+Group(pl):   X11/Biblioteki
 Requires:    %{name} = %{version}
 
 %description devel
@@ -79,7 +81,9 @@ wykorzystuj±cych Xaw3d.
 
 %package static
 Summary:     Xaw3d static library
+Summary(pl): Biblioteki statyczne Xaw3d
 Group:       X11/Libraries
+Group(pl):   X11/Biblioteki
 Requires:    %{name}-devel = %{version}
 
 %description static
@@ -105,7 +109,7 @@ Ten pakiet zawiera biblioteki statyczne dla Xaw3d.
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch -p1
 
 %build
 export PATH=/usr/X11R6/bin:$PATH
@@ -114,15 +118,18 @@ xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
 make	CDEBUGFLAGS="$RPM_OPT_FLAGS" \
 	CXXDEBUGFLAGS="$RPM_OPT_FLAGS" \
+	LDFLAGS=-s \
 	EXTRA_INCLUDES=-I.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/X11R6/include/X11
+install -d $RPM_BUILD_ROOT/usr/X11R6/include/X11
+
 cd xc/lib/Xaw3d
 make install DESTDIR=$RPM_BUILD_ROOT
-mv	$RPM_BUILD_ROOT/usr/X11R6/include/X11/Xaw3d \
-	$RPM_BUILD_ROOT/usr/X11R6/include/Xaw3d
+
+mv    $RPM_BUILD_ROOT/usr/X11R6/include/X11/Xaw3d \
+      $RPM_BUILD_ROOT/usr/X11R6/include/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT/usr/X11R6/include/X11/Xaw3d
 
 strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
@@ -146,8 +153,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/X11R6/lib/*.a
 
 %changelog
-* Sat Jan 23 1999 Micha³ Kuratczyk <kurkens@polbox.com>
-- added pl translation
+* Thu Feb 10 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+  [1.5-3]
+- added pl translations
+- added LDFLAGS=-s
 
 * Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.5-2]
