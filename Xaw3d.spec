@@ -5,15 +5,16 @@ Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	3
+Release:	4
 Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	MIT
 Source:		ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
-Patch:		Xaw3d-1.3-glibc.patch
-URL:		ftp://ftp.x.org/contrib/widgets/Xaw3d/
+Patch:		Xaw3d-glibc.patch
 Prereq:		fileutils
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define		_prefix		/usr/X11R6
 
 %description
 Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
@@ -30,25 +31,25 @@ Xaw3d est une version améliorée de l'ensemble Athena Widget du MIT pour
 X Window qui ajoute un aspect 3D aux applications avec peu, ou pas du tout,
 de modification du code.
 
-%description -l tr
-Xaw3d, MIT Athena kitaplýðýna, uygulamalara herhangi bir kod deðiþikliði
-yapýlmasýný gerektirmeden (ya da ufak deðiþiklikler yaparak), üç boyutlu
-bir görüntü kazandýran bir geliþtirmedir.
-
 %description -l pl
 Xaw3d jest ulepszon± wersj± biblioteki X Athena Widget, która dodaje
 trójwymiarowy wygl±d aplikacjom przy minimalnych (lub ¿adnych) zmianach
 kodu ¼ród³owego.
 
+%description -l tr
+Xaw3d, MIT Athena kitaplýðýna, uygulamalara herhangi bir kod deðiþikliði
+yapýlmasýný gerektirmeden (ya da ufak deðiþiklikler yaparak), üç boyutlu
+bir görüntü kazandýran bir geliþtirmedir.
+
 %package devel
-Summary:     Files for developing programs that use Xaw3d
-Summary(de): Dateien zur Entwicklung von Programmen, die Xaw3d benutzen 
-Summary(fr): Fichiers pour développer des programmes utilisant Xaw3d
-Summary(pl): Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
-Summary(tr): Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
-Group:       X11/Libraries
-Group(pl):   X11/Biblioteki
-Requires:    %{name} = %{version}
+Summary:	Files for developing programs that use Xaw3d
+Summary(de):	Dateien zur Entwicklung von Programmen, die Xaw3d benutzen 
+Summary(fr):	Fichiers pour développer des programmes utilisant Xaw3d
+Summary(pl):	Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
+Summary(tr):	Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
@@ -80,11 +81,11 @@ Ten pakiet zawiera pliki nag³ówkowe potrzebne do kompilacji programów
 wykorzystuj±cych Xaw3d.
 
 %package static
-Summary:     Xaw3d static library
-Summary(pl): Biblioteki statyczne Xaw3d
-Group:       X11/Libraries
-Group(pl):   X11/Biblioteki
-Requires:    %{name}-devel = %{version}
+Summary:	Xaw3d static library
+Summary(pl):	Biblioteki statyczne Xaw3d
+Group:		X11/Libraries
+Group(pl):	X11/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
 Xaw3d is an enhanced version of the MIT Athena Widget set for X Windows
@@ -118,21 +119,21 @@ xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
 make	CDEBUGFLAGS="$RPM_OPT_FLAGS" \
 	CXXDEBUGFLAGS="$RPM_OPT_FLAGS" \
-	LDFLAGS=-s \
+	LDFLAGS="-s" \
 	EXTRA_INCLUDES=-I.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/include/X11
+install -d $RPM_BUILD_ROOT%{_includedir}/X11
 
 cd xc/lib/Xaw3d
 make install DESTDIR=$RPM_BUILD_ROOT
 
-mv    $RPM_BUILD_ROOT/usr/X11R6/include/X11/Xaw3d \
-      $RPM_BUILD_ROOT/usr/X11R6/include/Xaw3d
-ln -s ../Xaw3d $RPM_BUILD_ROOT/usr/X11R6/include/X11/Xaw3d
+mv    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
+      $RPM_BUILD_ROOT%{_includedir}/Xaw3d
+ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
-strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -141,66 +142,19 @@ strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-/usr/X11R6/lib/lib*.so
-/usr/X11R6/include/Xaw3d
-/usr/X11R6/include/X11/Xaw3d
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_includedir}/Xaw3d
+%{_includedir}/X11/Xaw3d
 
 %files static
-%attr(644,root,root) /usr/X11R6/lib/*.a
+%attr(644,root,root) %{_libdir}/lib*.a
 
 %changelog
-* Thu Feb 10 1999 Micha³ Kuratczyk <kurkens@polbox.com>
-  [1.5-3]
-- added pl translations
-- added LDFLAGS=-s
-
-* Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.5-2]
-- fixed compiling Xaw3d on system without installled Xaw3d-devel.
-
-* Mon Aug 16 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.5-1]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- added static subpackage,
-- changed dependencies to "Requires: %%{name} = %%{version}" in devel
-  subpackage,
-- added using $RPM_OPT_FLAGS during compile,
-- added stripping shared libraries,
-- added %attr and %defattr macros in %files (allows build package from
-  non-root account).
-
-* Wed May 06 1998 Cristian Gafton <gafton@redhat.com>
-  [1.3-15]
-- fixed the bad symlink
-- BuildRoot
-
-* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Tue Nov 04 1997 Erik Troan <ewt@redhat.com>
-- don't lave an improper return code from %pre
-
-* Mon Nov 03 1997 Cristian Gafton <gafton@redhat.com>
-- take care of the old location of the Xaw3d includes in case that one exist
-- updated Prereq: field
-
-* Mon Oct 26 1997 Cristian Gafton <gafton@redhat.com
-- fixed the -devel package for the right include files path
-
-* Mon Oct 13 1997 Donnie Barnes <djb@redhat.com>
-- minor spec file cleanups
-
-* Wed Oct 01 1997 Erik Troan <ewt@redhat.com>
-- i18n widec.h patch needs to be applied on all systems
-
-* Sun Sep 14 1997 Erik Troan <ewt@redhat.com>
-- changed axp check to alpha
-
-* Mon Jun 16 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
+* Tue Jun 29 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.5-4]
+- based on RH spec,
+- spec rewrited by PLD team.
