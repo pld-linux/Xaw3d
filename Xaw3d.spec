@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	9
+Release:	10
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
@@ -151,7 +151,7 @@ ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%triggerpostun -- Xaw3d-devel < 1.5-5
+%triggerpostun devel -- Xaw3d-devel < 1.5-5
 if [ -d /usr/X11R6/include/Xaw3d ]; then
 	rm -rf /usr/X11R6/include/Xaw3d
 	ln -sf X11/Xaw3d /usr/X11R6/include
