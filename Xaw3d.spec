@@ -83,6 +83,7 @@ Summary(tr):	Xaw3d kitaplЩПЩnЩ kullanan programlar geliЧtirmek iГin gerekli dosy
 Summary(uk):	Файли для розробки програм, як╕ використовують Xaw3d
 Group:		X11/Libraries
 Requires:	%{name} = %{version}
+Requires:	XFree86-devel
 Obsoletes:	libXaw3d7-devel
 
 %description devel
