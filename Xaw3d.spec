@@ -13,6 +13,7 @@ Release:	1
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
+# Source0-md5: 29ecfdcd6bcf47f62ecfd672d31269a1
 Patch0:		%{name}-glibc.patch
 Patch1:		%{name}.patch
 Patch2:		%{name}-static.patch
