@@ -1,8 +1,9 @@
---- Xaw3d-1.5/xc/lib/Xaw3d/Imakefile.orig	Mon Jul  3 14:26:09 2000
-+++ Xaw3d-1.5/xc/lib/Xaw3d/Imakefile	Mon Jul  3 14:26:36 2000
-@@ -1,5 +1,6 @@
- XCOMM $XConsortium: Imakefile,v 1.78 91/09/18 14:28:23 rws Exp $
--
+--- Xaw3d-1.5E/xc/lib/Xaw3d/Imakefile.orig	Fri Apr 18 09:45:50 2003
++++ Xaw3d-1.5E/xc/lib/Xaw3d/Imakefile	Fri Apr 18 09:46:25 2003
+@@ -11,6 +11,8 @@
+ XCOMM For scrollbars with arrows, define ARROW_SCROLLBARS:
+ #undef ARROW_SCROLLBARS
+ 
 +#undef ForceNormalLib
 +#define ForceNormalLib YES
  #define DoNormalLib NormalLibXaw
