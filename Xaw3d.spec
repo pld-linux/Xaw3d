@@ -22,7 +22,7 @@ Patch4:		%{name}-i18n.patch
 Patch5:		%{name}-arrowscroll.patch
 URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	XFree86-devel
-PreReq:		fileutils
+Requires:	fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
 
@@ -84,8 +84,8 @@ Summary(pt_BR):	Arquivos para desenvolvimento de programas que usam Xaw3d
 Summary(ru):	Файлы для разработки программ, использующих Xaw3d
 Summary(tr):	Xaw3d kitaplЩПЩnЩ kullanan programlar geliЧtirmek iГin gerekli dosyalar
 Summary(uk):	Файли для розробки програм, як╕ використовують Xaw3d
-Group:		X11/Libraries
-Requires:	%{name} = %{version}
+Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	XFree86-devel
 Obsoletes:	libXaw3d7-devel
 
@@ -154,8 +154,8 @@ Summary(pl):	Biblioteki statyczne Xaw3d
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com Xaw3d
 Summary(uk):	Статичн╕ б╕бл╕отеки для розробки програм, як╕ використовують Xaw3d
 Summary(ru):	Статические библиотеки для разработки программ, использующих Xaw3d
-Group:		X11/Libraries
-Requires:	%{name}-devel = %{version}
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
