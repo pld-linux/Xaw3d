@@ -28,12 +28,12 @@ Obsoletes:	libXaw3d7
 
 %description
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
-Windows that adds a 3-dimensional look to the applications with
+Window that adds a 3-dimensional look to the applications with
 minimal or no source code changes.
 
 %description -l de
 Xaw3d ist eine erweiterte Version des MIT Athena Widget Set fЭr X
-Windows, das die Anwendung dreidimensional erscheinen lДъt, ohne daъ
+Window, das die Anwendung dreidimensional erscheinen lДъt, ohne daъ
 umfangreiche дnderungen am Quellcode notwendig sind.
 
 %description -l es
@@ -58,7 +58,7 @@ mudanГas mМnimas ou nenhuma nos cСdigos fonte.
 
 %description -l ru
 Xaw3d - это улучшенная версия набора экранных примитивов MIT Athena
-Widget для X Windows, придающая приложениям "трехмерный" вид с
+Widget для X Window, придающая приложениям "трехмерный" вид с
 минимальными изменениями исходного текста (в большинстве случаев без
 изменений).
 
@@ -69,7 +69,7 @@ yaparak), ЭГ boyutlu bir gЖrЭntЭ kazandЩran bir geliЧtirmedir.
 
 %description -l uk
 Xaw3d - це покращена верс╕я набору екранних прим╕тив╕в MIT Athena
-Widget для X Windows, яка нада╓ програмам "трьохвим╕рного" вигляду з
+Widget для X Window, яка нада╓ програмам "трьохвим╕рного" вигляду з
 м╕н╕мальними зм╕нами вих╕дного коду (у б╕льшост╕ випадк╕в без зм╕н).
 
 %package devel
@@ -89,7 +89,7 @@ Obsoletes:	libXaw3d7-devel
 
 %description devel
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
-Windows that adds a 3-dimensional look to the applications with
+Window that adds a 3-dimensional look to the applications with
 minimal or no source code changes.
 
 This package includes the header files developing programs that take
@@ -97,7 +97,7 @@ full advantage of Xaw3d's features.
 
 %description devel -l de
 Xaw3d ist eine erweiterte Version des MIT-Athena Widget-Sets fЭr
-X-Windows, das einer Applikationen mit minimalen oder keinen
+X-Window, das einer Applikationen mit minimalen oder keinen
 дnderungen am Quellcode einen 3D-Look verleiht. Das Paket enthДlt die
 Headerdateien zur Entwicklung von Programmen, die die Vorteile von
 Xaw3d voll nutzen.
@@ -133,14 +133,14 @@ que utilizam total vantagem das caracterМsticas de Xaw3d.
 
 %description devel -l uk
 Xaw3d - це покращена верс╕я набору екранних прим╕тив╕в MIT Athena
-Widget для X Windows, яка нада╓ програмам "трьохвим╕рного" вигляду з
+Widget для X Window, яка нада╓ програмам "трьохвим╕рного" вигляду з
 м╕н╕мальними зм╕нами вих╕дного коду (у б╕льшост╕ випадк╕в без зм╕н).
 Цей пакет м╕стить хедери та б╕бл╕отеки програм╕ста, необх╕дн╕ для
 розробки програм, як╕ використовують Xaw3d.
 
 %description devel -l ru
 Xaw3d - это улучшенная версия набора экранных примитивов MIT Athena
-Widget для X Windows, придающая приложениям "трехмерный" вид с
+Widget для X Window, придающая приложениям "трехмерный" вид с
 минимальными изменениями исходного текста (в большинстве случаев без
 изменений). Этот пакет содержит хедеры и библиотеки разработчика,
 необходимые для разработки программ, использующих Xaw3d.
@@ -157,7 +157,7 @@ Requires:	%{name}-devel = %{version}
 
 %description static
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
-Windows that adds a 3-dimensional look to the applications with
+Window that adds a 3-dimensional look to the applications with
 minimal or no source code changes.
 
 This package includes the static library for developing programs that
@@ -165,7 +165,7 @@ take full advantage of Xaw3d's features.
 
 %description static -l de
 Xaw3d ist eine erweiterte Version des MIT-Athena Widget-Sets fЭr
-X-Windows, das einer Applikationen mit minimalen oder keinen
+X-Window, das einer Applikationen mit minimalen oder keinen
 дnderungen am Quellcode einen 3D-Look verleiht. Das Paket enthДlt die
 statischen Library zur Entwicklung von Programmen, die die Vorteile
 von Xaw3d voll nutzen.
@@ -182,14 +182,14 @@ Bibliotecas estАticas para desenvolvimento com Xaw3d.
 
 %description static -l uk
 Xaw3d - це покращена верс╕я набору екранних прим╕тив╕в MIT Athena
-Widget для X Windows, яка нада╓ програмам "трьохвим╕рного" вигляду з
+Widget для X Window, яка нада╓ програмам "трьохвим╕рного" вигляду з
 м╕н╕мальними зм╕нами вих╕дного коду (у б╕льшост╕ випадк╕в без зм╕н).
 Цей пакет м╕стить статичн╕ б╕бл╕отеки, необх╕дн╕ для розробки програм,
 як╕ використовують Xaw3d.
 
 %description static -l ru
 Xaw3d - это улучшенная версия набора экранных примитивов MIT Athena
-Widget для X Windows, придающая приложениям "трехмерный" вид с
+Widget для X Window, придающая приложениям "трехмерный" вид с
 минимальными изменениями исходного текста (в большинстве случаев без
 изменений). Этот пакет содержит статические библиотеки, необходимые
 для разработки программ, использующих Xaw3d.
