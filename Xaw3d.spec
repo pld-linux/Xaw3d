@@ -18,7 +18,8 @@ Patch1:		%{name}.patch
 Patch2:		%{name}-static.patch
 Patch3:		%{name}-ia64.patch
 Patch4:		%{name}-i18n.patch
-Prereq:		fileutils
+BuildRequires:	XFree86-devel
+PreReq:		fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
 
@@ -204,7 +205,8 @@ export PATH=%{_bindir}:$PATH
 cd xc/lib/Xaw3d
 xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
-make	CDEBUGFLAGS="%{rpmcflags}" \
+%{__make} \
+	CDEBUGFLAGS="%{rpmcflags}" \
 	CXXDEBUGFLAGS="%{rpmcflags}" \
 	EXTRA_INCLUDES=-I.
 
@@ -219,11 +221,11 @@ mv -f    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
       $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %triggerpostun devel -- Xaw3d-devel < 1.5-5
 if [ -d /usr/X11R6/include/Xaw3d ]; then
@@ -233,6 +235,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc xc/lib/Xaw3d/README.XAW3D
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
