@@ -1,12 +1,13 @@
-Summary:	X athena widgets in 3d
+Summary:	X athena widgets in 3D
 Summary(de):	X-Athena-Widgets in 3D 
 Summary(fr):	Widgets X Athena en 3D
 Summary(pl):	Biblioteka X athena widgets (wersja 3D)
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	8
+Release:	9
 Group:		X11/Libraries
+Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
 Copyright:	MIT
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
@@ -52,6 +53,7 @@ Summary(fr):	Fichiers pour développer des programmes utilisant Xaw3d
 Summary(pl):	Pliki potrzebne przy kompilacji programów u¿ywaj±cych Xaw3d
 Summary(tr):	Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
 Group:		X11/Libraries
+Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -89,6 +91,7 @@ wykorzystuj±cych Xaw3d.
 Summary:	Xaw3d static library
 Summary(pl):	Biblioteki statyczne Xaw3d
 Group:		X11/Libraries
+Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -123,13 +126,12 @@ Ten pakiet zawiera biblioteki statyczne dla Xaw3d.
 %patch4 -p1
 
 %build
-export PATH=/usr/X11R6/bin:$PATH
+export PATH=%{_bindir}:$PATH
 cd xc/lib/Xaw3d
 xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
-make	CDEBUGFLAGS="$RPM_OPT_FLAGS" \
-	CXXDEBUGFLAGS="$RPM_OPT_FLAGS" \
-	LDFLAGS="-s" \
+make	CDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
+	CXXDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
 	EXTRA_INCLUDES=-I.
 
 %install
@@ -139,17 +141,21 @@ install -d $RPM_BUILD_ROOT%{_includedir}/X11
 cd xc/lib/Xaw3d
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-mv    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
+mv -f    $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
       $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
-
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%triggerpostun -- Xaw3d-devel < 1.5-5
+if [ -d /usr/X11R6/include/Xaw3d ]; then
+	rm -rf /usr/X11R6/include/Xaw3d
+	ln -sf X11/Xaw3d /usr/X11R6/include
+fi                                                                                                            
 
 %files
 %defattr(644,root,root,755)
