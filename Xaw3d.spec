@@ -10,13 +10,6 @@ Version:	1.5
 Release:	12
 License:	MIT
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
 Patch0:		%{name}-glibc.patch
 Patch1:		%{name}-shlib.patch
@@ -72,13 +65,6 @@ Summary(pl):	Pliki potrzebne przy kompilacji programСw u©ywaj╠cych Xaw3d
 Summary(pt_BR):	Arquivos para desenvolvimento de programas que usam Xaw3d
 Summary(tr):	Xaw3d kitaplЩПЩnЩ kullanan programlar geliЧtirmek iГin gerekli dosyalar
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -131,13 +117,6 @@ Summary(es):	Static libraries for Xaw3d development
 Summary(pl):	Biblioteki statyczne Xaw3d
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com Xaw3d
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
