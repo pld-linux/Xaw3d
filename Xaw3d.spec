@@ -141,16 +141,16 @@ strip $RPM_BUILD_ROOT/usr/X11R6/lib/lib*.so.*.*
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755, root, root) /usr/X11R6/lib/lib*.so.*.*
+%attr(755,root,root) /usr/X11R6/lib/lib*.so.*.*
 
 %files devel
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 /usr/X11R6/lib/lib*.so
 /usr/X11R6/include/Xaw3d
 /usr/X11R6/include/X11/Xaw3d
 
 %files static
-%attr(644, root, root) /usr/X11R6/lib/*.a
+%attr(644,root,root) /usr/X11R6/lib/*.a
 
 %changelog
 * Thu Feb 10 1999 Micha³ Kuratczyk <kurkens@polbox.com>
