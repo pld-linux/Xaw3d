@@ -5,7 +5,7 @@ Summary(pl): Biblioteka X athena widgets (wersja 3D)
 Summary(tr): 3D X Athena arayüz elemanlarý (widgets)
 Name:        Xaw3d
 Version:     1.5
-Release:     1
+Release:     2
 Group:       X11/Libraries
 Copyright:   MIT
 Source:      ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
@@ -85,6 +85,7 @@ Entwicklung von Programmen, die die Vorteile von Xaw3d voll nutzen.
 export PATH=/usr/X11R6/bin:$PATH
 cd xc/lib/Xaw3d
 xmkmf
+mkdir X11; ln -s `pwd` X11/Xaw3d
 make	CDEBUGFLAGS="$RPM_OPT_FLAGS" \
 	CXXDEBUGFLAGS="$RPM_OPT_FLAGS" \
 	EXTRA_INCLUDES=-I.
@@ -119,6 +120,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/X11R6/lib/*.a
 
 %changelog
+* Mon Oct 12 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.5-2]
+- fixed compiling Xaw3d on system without installled Xaw3d-devel.
+
 * Mon Aug 16 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.5-1]
 - added -q %setup parameter,
