@@ -12,7 +12,7 @@ Copyright:	MIT
 Source:		ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
 Patch:		Xaw3d-glibc.patch
 Prereq:		fileutils
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 
