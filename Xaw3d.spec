@@ -9,7 +9,7 @@ Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Summary(uk):	÷ÅÒÓ¦Ñ MIT Athena widget set ÄÌÑ X
 Name:		Xaw3d
 Version:	1.5E
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
