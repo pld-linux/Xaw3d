@@ -130,8 +130,8 @@ export PATH=%{_bindir}:$PATH
 cd xc/lib/Xaw3d
 xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
-make	CDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
-	CXXDEBUGFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
+make	CDEBUGFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
+	CXXDEBUGFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
 	EXTRA_INCLUDES=-I.
 
 %install
