@@ -7,7 +7,7 @@ Summary(pt_BR):	Widgets X athena em 3d
 Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Name:		Xaw3d
 Version:	1.5
-Release:	12
+Release:	13
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.x.org/contrib/widgets/Xaw3d/R6.3/%{name}-%{version}.tar.gz
@@ -18,6 +18,7 @@ Patch3:		%{name}-static.patch
 Patch4:		%{name}-ia64.patch
 Prereq:		fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libXaw3d7
 
 %define		_prefix		/usr/X11R6
 
@@ -66,6 +67,7 @@ Summary(pt_BR):	Arquivos para desenvolvimento de programas que usam Xaw3d
 Summary(tr):	Xaw3d kitaplýðýný kullanan programlar geliþtirmek için gerekli dosyalar
 Group:		X11/Libraries
 Requires:	%{name} = %{version}
+Obsoletes:	libXaw3d7-devel
 
 %description devel
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
