@@ -1,0 +1,10 @@
+--- Xaw3d-1.5/xc/lib/Xaw3d/Imakefile.orig	Mon Jul  3 14:26:09 2000
++++ Xaw3d-1.5/xc/lib/Xaw3d/Imakefile	Mon Jul  3 14:26:36 2000
+@@ -1,5 +1,6 @@
+ XCOMM $XConsortium: Imakefile,v 1.78 91/09/18 14:28:23 rws Exp $
+-
++#undef ForceNormalLib
++#define ForceNormalLib YES
+ #define DoNormalLib NormalLibXaw
+ #define DoSharedLib SharedLibXaw
+ #define DoDebugLib DebugLibXaw 

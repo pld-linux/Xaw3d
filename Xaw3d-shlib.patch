@@ -1,0 +1,31 @@
+diff -Nru Xaw3d-1.5/xc/lib/Xaw3d/Imakefile Xaw3d-1.5.new/xc/lib/Xaw3d/Imakefile
+--- Xaw3d-1.5/xc/lib/Xaw3d/Imakefile	Tue Oct 15 16:41:19 1996
++++ Xaw3d-1.5.new/xc/lib/Xaw3d/Imakefile	Sat Sep  9 03:49:45 2000
+@@ -10,27 +10,6 @@
+ #define IncSubdir X11
+ #define IncSubSubdir Xaw3d
+ 
+-#ifdef LinuxArchitecture
+-JUMP_ROOT_Xaw3d = $(AWIDGETSRC)3d
+-JUMP_IS_HOST_Xaw3d = YES
+-JUMP_STUBLIBS_Xaw3d = libXaw3d.sa
+-JUMP_SUBDIRS_Xaw3d = $(JUMP_ROOT_Xt)
+-JUMP_DIR_Xaw3d = $(JUMP_ROOT_Xaw3d)/shared
+-JUMP_VARS_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_vars
+-JUMP_FUNCS_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_funcs
+-JUMP_IGNORE_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_ignore
+-JUMP_EXPORT_Xaw3d = $(JUMP_DIR_Xaw3d)/jump.vars
+-JUMP_IMPORT_Xaw3d = $(JUMP_EXPORT_Xt) $(JUMP_EXPORT_X11)
+-JUMP_ADDRESS_Xaw3d = 0x60300000
+-JUMP_JUMPTABLESIZE_Xaw3d = 0x4000
+-JUMP_GOTSIZE_Xaw3d = 4096
+-JUMP_STUBNAMES_Xaw3d = libXaw3d
+-JUMP_STUBS_IMPORT_Xaw3d = $(JUMP_STUBS_IMPORT_X11)
+-JUMP_LDLIBS_Xaw3d = $(JUMP_ROOT_Xt)/libXt.sa $(JUMP_ROOT_Xt)/libXmu.sa \
+-        $(JUMP_ROOT_Xt)/libXext.sa $(JUMP_ROOT_X11)/libX11.sa \
+-        $(JUMP_LDLIBS_libc)
+-#endif
+-
+ #ifdef SharedXawReqs
+ REQUIREDLIBS = SharedXawReqs
+ #endif

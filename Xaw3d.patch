@@ -1,0 +1,30 @@
+--- Xaw3d-1.5/xc/lib/Xaw3d/Scrollbar.c	Tue Oct 15 07:41:21 1996
++++ Xaw3d-1.5.ia64/xc/lib/Xaw3d/Scrollbar.c	Tue May  9 07:02:52 2000
+@@ -1178,7 +1178,11 @@
+     Cardinal *num_params;	/* unused */
+ {
+     register ScrollbarWidget sbw = (ScrollbarWidget) w;
+-    float top = sbw->scrollbar.top;
++    union {
++	XtPointer pt;
++	float	  top;
++    } foo;
++    foo.top = sbw->scrollbar.top;
+ 
+ #ifndef ARROW_SCROLLBAR
+     if (sbw->scrollbar.direction == 0) return; /* if no StartScroll */
+@@ -1204,10 +1208,10 @@
+        there is no problem since in this case there is always a constant
+        integer number of pixels the thumb must be moved in order to scroll
+        to the next line/column. */
+-    top += 0.0001;
++    foo.top += 0.0001;
+ #endif
+-    XtCallCallbacks (w, XtNthumbProc, *(XtPointer*)&top);
+-    XtCallCallbacks (w, XtNjumpProc, (XtPointer)&top);
++    XtCallCallbacks (w, XtNthumbProc, foo.pt);
++    XtCallCallbacks (w, XtNjumpProc, (XtPointer)&sbw->scrollbar.top);
+ }
+ 
+
+
