@@ -22,6 +22,8 @@ Patch4:		%{name}-i18n.patch
 Patch5:		%{name}-arrowscroll.patch
 URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	XFree86-devel
+BuildRequires:	bison
+BuildRequires:	flex
 Requires:	fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
