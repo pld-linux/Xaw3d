@@ -23,6 +23,7 @@ Patch5:		%{name}-arrowscroll.patch
 URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	xorg-cf-files
 BuildRequires:	xorg-lib-libXmu
 BuildRequires:	xorg-lib-libXpm
 BuildRequires:	xorg-util-imake
