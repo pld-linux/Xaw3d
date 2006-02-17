@@ -24,8 +24,8 @@ URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xorg-cf-files
-BuildRequires:	xorg-lib-libXmu
-BuildRequires:	xorg-lib-libXpm
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-util-imake
 Requires:	fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -89,7 +89,8 @@ Summary(tr):	Xaw3d kitaplЩПЩnЩ kullanan programlar geliЧtirmek iГin gerekli dosy
 Summary(uk):	Файли для розробки програм, як╕ використовують Xaw3d
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	XFree86-devel
+Requires:	xorg-lib-libXmu-devel
+Requires:	xorg-lib-libXpm-devel
 Obsoletes:	libXaw3d7-devel
 
 %description devel
