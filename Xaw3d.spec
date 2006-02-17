@@ -9,7 +9,7 @@ Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Summary(uk):	÷ÅÒÓ¦Ñ MIT Athena widget set ÄÌÑ X
 Name:		Xaw3d
 Version:	1.5E
-Release:	3
+Release:	4
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.visi.com/users/hawkeyd/X/%{name}-%{version}.tar.gz
@@ -21,14 +21,13 @@ Patch3:		%{name}-ia64.patch
 Patch4:		%{name}-i18n.patch
 Patch5:		%{name}-arrowscroll.patch
 URL:		http://www.visi.com/~hawkeyd/xaw3d.html
-BuildRequires:	XFree86-devel
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	xorg-lib-libXmu
+BuildRequires:	xorg-lib-libXpm
 Requires:	fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
-
-%define		_prefix		/usr/X11R6
 
 %description
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
@@ -235,12 +234,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
-%triggerpostun devel -- Xaw3d-devel < 1.5-5
-if [ -d /usr/X11R6/include/Xaw3d ]; then
-	rm -rf /usr/X11R6/include/Xaw3d
-	ln -sf X11/Xaw3d /usr/X11R6/include
-fi
 
 %files
 %defattr(644,root,root,755)
