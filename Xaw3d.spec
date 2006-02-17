@@ -25,6 +25,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xorg-lib-libXmu
 BuildRequires:	xorg-lib-libXpm
+BuildRequires:	xorg-util-imake
 Requires:	fileutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
