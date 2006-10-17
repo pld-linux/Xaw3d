@@ -28,8 +28,8 @@ BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-util-imake
 Requires:	fileutils
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libXaw3d7
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Xaw3d is an enhanced version of the MIT Athena Widget set for X
@@ -210,22 +210,22 @@ Widget для X Window, придающая приложениям "трехмерный" вид с
 %patch5
 
 %build
-export PATH=%{_bindir}:$PATH
 cd xc/lib/Xaw3d
 xmkmf
 mkdir X11; ln -s `pwd` X11/Xaw3d
+# kill unneeded -lXp from EXTRAXAWREQS
 %{__make} \
 	CC="%{__cc}" \
 	CDEBUGFLAGS="%{rpmcflags}" \
-	CXXDEBUGFLAGS="%{rpmcflags}" \
-	EXTRA_INCLUDES=-I.
+	SHLIBGLOBALSFLAGS="%{rpmldflags}" \
+	EXTRA_INCLUDES=-I. \
+	EXTRAXAWREQS=
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}/X11
 
-cd xc/lib/Xaw3d
-%{__make} install \
+%{__make} -C xc/lib/Xaw3d install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
@@ -241,14 +241,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc xc/lib/Xaw3d/README.XAW3D
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libXaw3d.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libXaw3d.so
 %{_includedir}/Xaw3d
 %{_includedir}/X11/Xaw3d
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libXaw3d.a
