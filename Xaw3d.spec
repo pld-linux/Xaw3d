@@ -9,7 +9,7 @@ Summary(tr):	3D X Athena arayüz elemanlarý (widgets)
 Summary(uk):	÷ÅÒÓ¦Ñ MIT Athena widget set ÄÌÑ X
 Name:		Xaw3d
 Version:	1.5E
-Release:	4
+Release:	5
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.visi.com/users/hawkeyd/X/%{name}-%{version}.tar.gz
@@ -230,7 +230,7 @@ install -d $RPM_BUILD_ROOT%{_includedir}/X11
 
 mv -f $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d \
 	$RPM_BUILD_ROOT%{_includedir}/Xaw3d
-ln -s ../Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
+ln -s %{_includedir}/Xaw3d $RPM_BUILD_ROOT%{_includedir}/X11/Xaw3d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
