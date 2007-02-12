@@ -1,12 +1,12 @@
 Summary:	A version of the MIT Athena widget set for X
-Summary(de.UTF-8):   3D-Version des MIT Athena-Widgetsatzes fuer X
-Summary(es.UTF-8):   Widgets X athena en 3D
-Summary(fr.UTF-8):   Widgets X Athena en 3D
-Summary(pl.UTF-8):   Biblioteka X athena widgets (wersja 3D)
-Summary(pt_BR.UTF-8):   Widgets X athena em 3d
-Summary(ru.UTF-8):   Версия MIT Athena widget set для X
-Summary(tr.UTF-8):   3D X Athena arayüz elemanları (widgets)
-Summary(uk.UTF-8):   Версія MIT Athena widget set для X
+Summary(de.UTF-8):	3D-Version des MIT Athena-Widgetsatzes fuer X
+Summary(es.UTF-8):	Widgets X athena en 3D
+Summary(fr.UTF-8):	Widgets X Athena en 3D
+Summary(pl.UTF-8):	Biblioteka X athena widgets (wersja 3D)
+Summary(pt_BR.UTF-8):	Widgets X athena em 3d
+Summary(ru.UTF-8):	Версия MIT Athena widget set для X
+Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
+Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
 Version:	1.5E
 Release:	5
@@ -79,14 +79,14 @@ Widget для X Window, яка надає програмам "трьохвимі
 
 %package devel
 Summary:	Files for developing programs that use Xaw3d
-Summary(de.UTF-8):   Header und statische Libraries fuer Xaw3d-Entwicklung
-Summary(es.UTF-8):   Archivos para desarrollo de programas que usan Xaw3d
-Summary(fr.UTF-8):   Fichiers pour développer des programmes utilisant Xaw3d
-Summary(pl.UTF-8):   Pliki potrzebne przy kompilacji programów używających Xaw3d
-Summary(pt_BR.UTF-8):   Arquivos para desenvolvimento de programas que usam Xaw3d
-Summary(ru.UTF-8):   Файлы для разработки программ, использующих Xaw3d
-Summary(tr.UTF-8):   Xaw3d kitaplığını kullanan programlar geliştirmek için gerekli dosyalar
-Summary(uk.UTF-8):   Файли для розробки програм, які використовують Xaw3d
+Summary(de.UTF-8):	Header und statische Libraries fuer Xaw3d-Entwicklung
+Summary(es.UTF-8):	Archivos para desarrollo de programas que usan Xaw3d
+Summary(fr.UTF-8):	Fichiers pour développer des programmes utilisant Xaw3d
+Summary(pl.UTF-8):	Pliki potrzebne przy kompilacji programów używających Xaw3d
+Summary(pt_BR.UTF-8):	Arquivos para desenvolvimento de programas que usam Xaw3d
+Summary(ru.UTF-8):	Файлы для разработки программ, использующих Xaw3d
+Summary(tr.UTF-8):	Xaw3d kitaplığını kullanan programlar geliştirmek için gerekli dosyalar
+Summary(uk.UTF-8):	Файли для розробки програм, які використовують Xaw3d
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	xorg-lib-libXmu-devel
@@ -153,11 +153,11 @@ Widget для X Window, придающая приложениям "трехме�
 
 %package static
 Summary:	Xaw3d static library
-Summary(es.UTF-8):   Bibliotecas estáticas para el desarrollo con Xaw3d
-Summary(pl.UTF-8):   Biblioteki statyczne Xaw3d
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com Xaw3d
-Summary(uk.UTF-8):   Статичні бібліотеки для розробки програм, які використовують Xaw3d
-Summary(ru.UTF-8):   Статические библиотеки для разработки программ, использующих Xaw3d
+Summary(es.UTF-8):	Bibliotecas estáticas para el desarrollo con Xaw3d
+Summary(pl.UTF-8):	Biblioteki statyczne Xaw3d
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com Xaw3d
+Summary(uk.UTF-8):	Статичні бібліотеки для розробки програм, які використовують Xaw3d
+Summary(ru.UTF-8):	Статические библиотеки для разработки программ, использующих Xaw3d
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
