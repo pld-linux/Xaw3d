@@ -9,17 +9,16 @@ Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
 Version:	1.5E
-Release:	6
+Release:	7
 License:	MIT
 Group:		X11/Libraries
 Source0:	ftp://ftp.visi.com/users/hawkeyd/X/%{name}-%{version}.tar.gz
 # Source0-md5:	29ecfdcd6bcf47f62ecfd672d31269a1
-Patch0:		%{name}-glibc.patch
+Patch0:		%{name}-debian.patch
 Patch1:		%{name}.patch
 Patch2:		%{name}-static.patch
 Patch3:		%{name}-ia64.patch
-Patch4:		%{name}-i18n.patch
-Patch5:		%{name}-arrowscroll.patch
+Patch4:		%{name}-arrowscroll.patch
 URL:		http://www.visi.com/~hawkeyd/xaw3d.html
 BuildRequires:	bison
 BuildRequires:	flex
@@ -202,12 +201,10 @@ Widget для X Window, придающая приложениям "трехме�
 
 %prep
 %setup -q -c
-%patch0 -p1
+%patch0 -p0
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5
+%patch4 -p0
 
 %build
 cd xc/lib/Xaw3d
