@@ -1,0 +1,2022 @@
+diff -urN xc.org/compat.im xc/compat.im
+--- xc.org/compat.im	1970-01-01 01:00:00.000000000 +0100
++++ xc/compat.im	2009-01-22 17:59:49.588848848 +0100
+@@ -0,0 +1,248 @@
++XCOMM $XConsortium: Imakefile,v 1.78 91/09/18 14:28:23 rws Exp $
++
++#define DoSharedLib SharedLibXaw
++#define DoDebugLib DebugLibXaw 
++#define DoProfileLib ProfileLibXaw 
++#define HasSharedData YES
++#define LibName Xaw3d
++#define SoRev SOXAWREV
++#define IncSubdir Xaw3d
++
++#ifdef LinuxArchitecture
++#JUMP_ROOT_Xaw3d = $(AWIDGETSRC)3d
++#JUMP_IS_HOST_Xaw3d = YES
++#JUMP_STUBLIBS_Xaw3d = libXaw3d.sa
++#JUMP_SUBDIRS_Xaw3d = $(JUMP_ROOT_Xt)
++#JUMP_DIR_Xaw3d = $(JUMP_ROOT_Xaw3d)/shared
++#JUMP_VARS_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_vars
++#JUMP_FUNCS_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_funcs
++#JUMP_IGNORE_Xaw3d = $(JUMP_ROOT_Xaw3d)/jump_ignore
++#JUMP_EXPORT_Xaw3d = $(JUMP_DIR_Xaw3d)/jump.vars
++#JUMP_IMPORT_Xaw3d = $(JUMP_EXPORT_Xt) $(JUMP_EXPORT_X11)
++#JUMP_ADDRESS_Xaw3d = 0x60300000
++#JUMP_JUMPTABLESIZE_Xaw3d = 0x4000
++#JUMP_GOTSIZE_Xaw3d = 4096
++#JUMP_STUBNAMES_Xaw3d = libXaw3d
++#JUMP_STUBS_IMPORT_Xaw3d = $(JUMP_STUBS_IMPORT_X11)
++#JUMP_LDLIBS_Xaw3d = $(JUMP_ROOT_Xt)/libXt.sa $(JUMP_ROOT_Xt)/libXmu.sa \
++#        $(JUMP_ROOT_Xt)/libXext.sa $(JUMP_ROOT_X11)/libX11.sa \
++#        $(JUMP_LDLIBS_libc)
++#endif
++
++#ifdef SharedXawReqs
++REQUIREDLIBS = SharedXawReqs
++#endif
++
++DEFINES = XawI18nDefines
++
++       LINTLIBS = $(LINTXLIB) $(LINTXTOOL)
++
++#  EXTRA_DEFINES = -DARROW_SCROLLBAR -DUSEGRAY
++
++  EXTRA_INCLUDES = -I.
++
++HEADERS = \
++	AllWidgets.h \
++	AsciiSink.h \
++	AsciiSinkP.h \
++	AsciiSrc.h \
++	AsciiSrcP.h \
++	AsciiText.h \
++	AsciiTextP.h \
++	Box.h \
++	BoxP.h \
++	Cardinals.h \
++	Command.h \
++	CommandP.h \
++	Dialog.h \
++	DialogP.h \
++	Form.h \
++	FormP.h \
++	Grip.h \
++	GripP.h \
++	Label.h \
++	LabelP.h \
++	Layout.h \
++	LayoutP.h \
++	List.h \
++	ListP.h \
++	MenuButton.h \
++	MenuButtoP.h \
++	MultiSrc.h \
++	MultiSrcP.h \
++	MultiSink.h \
++	MultiSinkP.h \
++	Paned.h \
++	PanedP.h \
++	Panner.h \
++	PannerP.h \
++	Porthole.h \
++	PortholeP.h \
++	Repeater.h \
++	RepeaterP.h \
++	Reports.h \
++	Scrollbar.h \
++	ScrollbarP.h \
++	Simple.h \
++	SimpleP.h \
++	SimpleMenu.h \
++	SimpleMenP.h \
++	Sme.h \
++	SmeP.h \
++	SmeBSB.h \
++	SmeBSBP.h \
++	SmeLine.h \
++	SmeLineP.h \
++	SmeThreeD.h \
++	SmeThreeDP.h \
++	StripChart.h \
++	StripCharP.h \
++	Template.c \
++	Template.h \
++	TemplateP.h \
++	Text.h \
++	TextP.h \
++	TextSink.h \
++	TextSinkP.h \
++	TextSrc.h \
++	TextSrcP.h \
++	ThreeD.h \
++	ThreeDP.h \
++	Toggle.h \
++	ToggleP.h \
++	Tree.h \
++	TreeP.h \
++	VendorEP.h \
++	Viewport.h \
++	ViewportP.h \
++	XawImP.h \
++	XawInit.h
++
++SRCS = \
++	AllWidgets.c \
++	AsciiSink.c \
++	AsciiSrc.c \
++	AsciiText.c \
++	Box.c \
++	Command.c \
++	Dialog.c \
++	Form.c \
++	Grip.c \
++	Label.c \
++	Layout.c \
++	List.c \
++	MenuButton.c \
++	MultiSrc.c \
++	MultiSink.c \
++	Paned.c \
++	Panner.c \
++	Porthole.c \
++	Repeater.c \
++	Scrollbar.c \
++	Simple.c \
++	SimpleMenu.c \
++	Sme.c \
++	SmeBSB.c \
++	SmeLine.c \
++	SmeThreeD.c \
++	StripChart.c \
++	Text.c \
++	TextSink.c \
++	TextSrc.c \
++	TextAction.c \
++	TextPop.c \
++	TextTr.c \
++	ThreeD.c \
++	Toggle.c \
++	Tree.c \
++	Vendor.c \
++	Viewport.c \
++	XawIm.c \
++	XawInit.c \
++	XawI18n.c \
++	sharedlib.c \
++	laygram.c \
++	laylex.c
++
++#if SharedDataSeparation
++UNSHAREDOBJS = AllWidgets.o sharedlib.o
++#endif
++
++OBJS = \
++	AllWidgets.o \
++	AsciiSink.o \
++	AsciiSrc.o \
++	AsciiText.o \
++	Box.o \
++	Command.o \
++	Dialog.o \
++	Form.o \
++	Grip.o \
++	Label.o \
++	Layout.o \
++	List.o \
++	MenuButton.o \
++	MultiSrc.o \
++	MultiSink.o \
++	Paned.o \
++	Panner.o \
++	Porthole.o \
++	Repeater.o \
++	Scrollbar.o \
++	Simple.o \
++	SimpleMenu.o \
++	Sme.o \
++	SmeBSB.o \
++	SmeLine.o \
++	SmeThreeD.o \
++	StripChart.o \
++	Text.o \
++	TextSink.o \
++	TextSrc.o \
++	TextAction.o \
++	TextPop.o \
++	TextTr.o \
++	ThreeD.o \
++	Toggle.o \
++	Tree.o \
++	Vendor.o \
++	Viewport.o \
++	XawIm.o \
++	XawI18n.o \
++	XawInit.o \
++	laygram.o \
++	laylex.o
++
++#include <Library.tmpl>
++
++#ifdef LexCmd
++LEX=LexCmd
++#endif
++#ifdef YaccCmd
++YACC=YaccCmd
++#endif
++
++all::
++
++depend:: laygram.c laylex.c
++
++#if DoSharedLib && SharedDataSeparation
++SpecialCObjectRule(sharedlib.o,NullParameter,$(SHLIBDEF))
++#endif
++
++laygram.c : laygram.y
++	$(YACC) -d laygram.y
++	sed 's/yy/LayYY/g' y.tab.c > laygram.c
++	sed 's/yy/LayYY/g' y.tab.h > laygram.h
++	$(RM) y.tab.c y.tab.h
++
++laylex.c: laylex.l
++	$(LEX) laylex.l
++	sed 's/yy/LayYY/g' lex.yy.c > laylex.c
++	$(RM) lex.yy.c
++
++clean::
++	$(RM) laygram.c laylex.c
++
++DependTarget()
++
+diff -urN xc.org/debian/changelog xc/debian/changelog
+--- xc.org/debian/changelog	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/changelog	2009-01-22 17:59:49.616847943 +0100
+@@ -0,0 +1,548 @@
++xaw3d (1.5+E-17) unstable; urgency=low
++
++  * Bumped replace to conflicts with pre -16 version. That's needed for 
++    moving of the .so link 
++   (closes: #492302)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 25 Jul 2008 09:47:14 +0200
++
++xaw3d (1.5+E-16) unstable; urgency=low
++
++  * New patch: MultiSrc.c.dpatch to avoid a double free bug with
++    internalionalized text. Patch taken from Xaw and used in Fedora.
++    (closes: #438737, #441304)
++  * Now using ${binary:Version} instead of ${Source-Version} in debian/control.
++  * Policy bumped to 3.8.0.
++  * Removed now superfluous libc-dev build-dependency.
++  * Symlink libXaw3d.so moved into -dev package.
++  * Moved xutils -> xutils-dev dependency in -dev package.
++    (closes: #485230)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu, 24 Jul 2008 12:39:29 +0200
++
++xaw3d (1.5+E-15) unstable; urgency=low
++
++  * New patch: Box.c.dpatch, to avoid an infinite loop due to short int overflow.
++    Thanks Glenn Burkhard. (closes: #420348)
++  * Policy bumped to 3.7.2 (no changes).
++  * Debhelper level moved to 5 with a few changes in debian/rules.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 24 Apr 2007 15:24:24 +0200
++
++xaw3d (1.5+E-14) unstable; urgency=low
++
++  * Sigh, libxmu-dev is more appropriate that the headers-only package dep
++    probably in xaw3dg-dev too.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed,  3 May 2006 12:17:05 +0200
++
++xaw3d (1.5+E-13) unstable; urgency=low
++
++  * Reintroduced _strictly_ required X11 -dev dependencies for xaw3dg-dev.
++    That should reduce the number of FTBS. The same list is now used in
++    build-dep.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed,  3 May 2006 11:39:08 +0200
++
++xaw3d (1.5+E-12) unstable; urgency=low
++
++  * Removed libxaw8-dev fake dependency, because it has been dropped in xorg
++    roadmap.
++  * Removed all X11 -dev dependencies in xaw3dg-dev, and the old
++    libc-dev|libc6-dev now superfluous dependency too. Packages now have to 
++    declare explicitly their own -dev build-deps.
++    (closes: #241280)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue,  2 May 2006 23:45:03 +0200
++
++xaw3d (1.5+E-11) unstable; urgency=low
++
++  * Changed to xorg 7 conformancy in paths: 
++  	/usr/X11R6/lib -> /usr/lib
++        /usr/X11R6/include -> /usr/include
++    (closes: #362074, #363578)
++  * Added xutils-dev versioned dependency.
++  * Removed fake libxp-dev build-dep due to xmkmf bug.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Sat, 15 Apr 2006 09:41:45 +0200
++
++xaw3d (1.5+E-10) unstable; urgency=low
++
++  * Added dependency on libxaw8-dev as alternative to 6|7 versions.
++    (closes: #321664)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  9 Jan 2006 08:34:44 +0100
++
++xaw3d (1.5+E-9) unstable; urgency=low
++
++  * Added build-dep for libxp-dev and revised other dependencies.
++    (closes: #330481)
++  * Policy bumped to 3.6.2 (no changes).
++  * Removed libc5 stuff in rules file.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed, 28 Sep 2005 14:18:28 +0200
++
++xaw3d (1.5+E-8) unstable; urgency=high
++
++  * Added new missing build-dep libxmu-dev due to last change.
++    (closes: #274589)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  4 Oct 2004 21:30:18 +0200
++
++xaw3d (1.5+E-7) unstable; urgency=low
++
++  * Changed build-deps to reflect -dev changes in X 4.3+
++    (closes: #241772)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  2 Aug 2004 15:32:04 +0200
++
++xaw3d (1.5+E-6) unstable; urgency=high
++
++  * Removed libxaw-dev dependency and introduced libxaw7-dev dependency.
++    (closes: #217084)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 24 Oct 2003 08:46:48 +0200
++
++xaw3d (1.5+E-5) unstable; urgency=low
++
++  * Removed libc5 stuff. It currently require a xlib6-altdev pkg which is not
++    currently available in xfree86. A control.oldlib has been preserved
++    for eventual future use.
++    A whishlist bug is required (to be reassigned to xfree86 :)) if
++    a libc5 oldlib is needed by someone.
++    (See #206832)
++  * Current flex is ok, control changed consequently.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 13 Oct 2003 11:01:53 +0200
++
++xaw3d (1.5+E-4) unstable; urgency=low
++
++  * Added conditional to xlib6-altdev for i386.
++    (closes: #213113)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Sun, 28 Sep 2003 18:50:34 +0200
++
++xaw3d (1.5+E-3) unstable; urgency=medium
++
++  * Added conflicts with old gv and xfig to simplify upgrading.
++    (closes: #210331)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Sat, 27 Sep 2003 08:46:43 +0200
++
++xaw3d (1.5+E-2) unstable; urgency=low
++
++  * debian/shlibs,debian/xaw3d.shlibs: Generate a dependency on xaw3dg (>= 1.5+E-1).
++    (closes: #207645)
++  * Policy updated to 3.6.1: no changes.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu, 28 Aug 2003 20:38:49 +0200
++
++xaw3d (1.5+E-1) unstable; urgency=low
++
++  * Ready for unstable. 
++    Changing release version for a smooth upgrading from experimental. 
++    (closes: #117325,#196439,#144877)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 19 Aug 2003 00:35:30 +0200
++
++xaw3d (1.5e-2) experimental; urgency=low
++
++  * Missing #include "XawAlloc.h" in SmeBSB.c.diff patch added.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu,  7 Aug 2003 15:02:54 +0200
++
++xaw3d (1.5e-1) experimental; urgency=low
++
++  * New upstream release (WOW!)
++    (should close: #117325)
++  * New upstream, after 5 years of staling.
++  * Removed debconf stuff. The past message about new use of Xaw3D was new at
++    woody releasing time. Now it's time to remove it, and there is no other
++    reason to use debconf.
++    (should close: #196439, #144877)
++  * Added dpatch support. There was a significant amount of historical patches
++    in the debian release: it's time to simplify the management to avoid
++    other pain in the ass with future releases.
++    Upstream has also integrated almost all of our patches in his current tree,
++    so I used dpatch to cross-check the sources.
++  * Policy updated at 3.6.0
++  * This release could potentially cause some breakage in other packages.
++    Surely there is a known problem with xfigi and gv. So, there are good reasons
++    to keep it in experimental first of all.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  4 Aug 2003 15:05:29 +0200
++
++xaw3d (1.5-24) unstable; urgency=low
++
++  * Use flex-old instead of flex in Build-deps.
++    (closes: #197164)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri, 13 Jun 2003 14:58:47 +0200
++
++xaw3d (1.5-23) unstable; urgency=low
++
++  * Added virtual libc-dev in Build-deps and xaw3dg-dev.
++    Removed non existent libc6.1-dev in Build-deps.
++    (closes: #182343)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon,  3 Mar 2003 11:20:21 +0100
++
++xaw3d (1.5-22) unstable; urgency=low
++
++  * Added pt_BR.po
++    (closes: #174952)
++  * Typo in copyright
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu,  2 Jan 2003 19:57:10 +0100
++
++xaw3d (1.5-21) unstable; urgency=low
++
++  * Changed Depends line for xaw3dg-dev in order to remove obsolete xlib6g-dev
++    (closes: #170206)
++  * Policy updated (3.5.8)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 10 Dec 2002 15:57:44 +0100
++
++xaw3d (1.5-20) unstable; urgency=low
++
++  * Fixed a typo in fr.po.
++    (closes: #166072)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed, 23 Oct 2002 19:39:26 +0200
++
++xaw3d (1.5-19) unstable; urgency=low
++
++  * fr.po added for po-debconf template.
++    (closes: #165284)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Sat, 19 Oct 2002 10:37:33 +0200
++
++xaw3d (1.5-18) unstable; urgency=low
++
++  * Policy standard update (3.5.7)
++  * Now use po-debconf for translations.
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Tue, 15 Oct 2002 10:51:29 +0200
++
++xaw3d (1.5-17) unstable; urgency=low
++
++  * Applied a patch to avoid scrollbar thumb shrinkage.
++    (closes: #138604)
++  * Removed a duplicated dh_installdebconf in rules file. This caused
++    duplicated code in postinst/postrm files.
++    (closes: #163626)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri,  4 Oct 2002 11:44:49 +0200
++
++xaw3d (1.5-16) unstable; urgency=low
++
++  * Applied a patch to avoid StripChart widget spurious extra scale lines.
++    See StripChart.c around line 351. This is now coherent with Xaw7.
++    (closes: #56421, #59529)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed,  2 Oct 2002 11:40:19 +0200
++
++xaw3d (1.5-15) unstable; urgency=low
++
++  * Added -DARROW_SCROLLBAR in rules file for EXTRA_DEFINES.
++    The trick described in old scrollbars doc is no longer working due 
++    to changes in rules file: EXTRA_DEFINES in lib/Xaw3d/Imakefile are ignored.
++    That obsolete document has been removed.
++    Emacs folks will be happy :)
++
++    This seems also closing an old bug report about scrolling in 
++    emacs21 and xterm. Or hope so. I'll see if I could get some better
++    patches to have a rock solid correction.
++    (closes: #36736)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Wed,  2 Oct 2002 10:19:04 +0200
++
++xaw3d (1.5-14) unstable; urgency=low
++
++  * Typo corrected.
++    (closes: #144877)
++
++ -- Francesco P. Lovergine <frankie@debian.org>  Mon, 29 Apr 2002 22:12:10 +0200
++
++xaw3d (1.5-13) unstable; urgency=low
++
++  * Changed README.Debian contents.
++    (closes: #141216)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Fri,  5 Apr 2002 10:04:28 +0200
++
++xaw3d (1.5-12) unstable; urgency=low
++
++  * Added japanese and russian template for debconf.
++    (closes: #137429)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Sat, 16 Mar 2002 20:11:01 +0100
++
++xaw3d (1.5-11) unstable; urgency=low
++
++  * New maintainer.
++    (closes: #130843)
++  * README.debian removed.
++    (closes: #127076)
++  * Debconf is now a pre-depend item in control file (due to preinst use).
++  * Debconf question moved in the config script.
++    (closes: #131950)
++
++ -- Francesco Paolo Lovergine <frankie@debian.org>  Thu, 31 Jan 2002 12:42:41 +0100
++
++xaw3d (1.5-10) unstable; urgency=low
++
++  * Orphaned this package.
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Fri, 25 Jan 2002 13:53:06 +0100
++
++xaw3d (1.5-9) unstable; urgency=low
++
++  * Added Spanish and German debconf template files.
++    (closes: #95439, #117682)
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Sat, 17 Nov 2001 19:09:09 +0100
++
++xaw3d (1.5-8) unstable; urgency=low
++
++  * s/Note/note/ in debian/templates. (closes: #106323)
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Sun, 21 Oct 2001 15:40:18 +0200
++
++xaw3d (1.5-7) unstable; urgency=low
++
++  * There's no longer a libc5 on m68k.
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Tue, 20 Mar 2001 20:48:00 +0100
++
++xaw3d (1.5-6) unstable; urgency=high
++
++  * The xaw3dg preinst did return an error when the "medium" debconf
++    note wasn't displayed. I added " || true" to fix this.
++    (closes: #86599)
++  * debian/shlibs: Generate a dependency on xaw3dg (>= 1.5-6). 
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Tue, 20 Feb 2001 14:21:24 +0100
++
++xaw3d (1.5-5) unstable; urgency=low
++
++  * xaw3dg is no longer a libXaw replacement (it was obsoleted by
++    libxaw7).
++
++  * Added the changes from Joey's NMU. (closes: #85884)
++  * Corrected the error in the build dependencies. (closes: #84661)
++  * Corrected a typo in the example Xdefault file. (closes: #83917)
++  * Corrected the section of xaw3dg-dev from devel to x11.
++  * Build with support for scrollbars.
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Sat, 17 Feb 2001 00:52:28 +0100
++
++xaw3d (1.5-4.1) unstable; urgency=HIGH
++
++  * NMU. Fixed temp file security holes in AsciiSrc and MultiSrc widgets.
++    Fix taken from X, which had the same problem.
++
++ -- Joey Hess <joeyh@debian.org>  Tue, 13 Feb 2001 12:56:25 -0800
++
++xaw3d (1.5-4) unstable; urgency=low
++
++  * Build-Depends: We need the libc5 packages only on i386 and m86k.
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Wed, 24 Jan 2001 23:43:35 +0100
++
++xaw3d (1.5-3) unstable; urgency=medium
++
++  * Added missing build dependency on xutils. (closes: #82011)
++  * Removed the obsolete suggestion of xaw-wrappers. (closes: #79567)
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Tue, 16 Jan 2001 00:23:38 +0100
++
++xaw3d (1.5-2) unstable; urgency=medium
++
++  * Set "SOXAWREV = SOXAW6REV" in lib/Xaw3d/Imakefile to get the right
++    so-version with XFree4. (closes: #77546)
++  * Changed the build dependencies to reflect the changes in XFree4.
++  * Changed debian/shlibs: libXaw is now in the libxaw6 package.
++  * Removed the dependency of xaw3dg on ldso and added a build
++    dependency on "libc6-dev (>= 2.2) | libc6.1-dev  (>= 2.2)" instead
++    since ldconfig is now in the libc6 package. (closes: #74657)
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Sun, 10 Dec 2000 13:24:41 +0100
++
++xaw3d (1.5-1) unstable; urgency=low
++
++  * New maintainer. (closes: #68174)
++  * New upstream release.
++  * xaw3dg now depends on xaw-wrappers.
++    (closes: #3857, #7757, #15113, #16247, #35059)
++  * s/$LDSOCONFA/$LDSOCONF/ in the postrm of xaw3d and xaw3dg.
++    (closes: #61180, #70459)
++  * Added build dependencies on debhelper and xlib6g-dev.
++  * Shortened the description of the xaw3d package.
++  * Removed debian/prerm and debian/xaw3d.prerm:
++    The /usr/doc links are handled by dh_installdocs.
++  * Added #DEBHELPER# tokens in debian/postrm and debian/xaw3d.postrm.
++  * Remove lib/Xaw3d/laygram.h in the clean target.
++  * Removed old.changes from the source.
++  * Upload sponsored by Tony Mancill <tmancill@debian.org>.
++
++ -- Adrian Bunk <bunk@fs.tum.de>  Fri,  3 Nov 2000 08:06:16 +0100
++
++xaw3d (1.3-6.8) frozen unstable; urgency=low
++
++  * Non-maintainer upload, blessed by the maintainer.
++  * Fix porting issues by making xaw3d (the libc5-compat package)
++    Architecture: i386 m68k, closes: #17184, #27133, #32244, #53515.
++    [important]
++  * Used xlib6-altdev tools, too (xmkmf), to make libc5 version depend
++    on libc5 X libs (does anyone actually use this libc5-compat lib?!).
++    [important]
++  * Added Replaces: xaw3dg (<< 1.3-6.4) to xaw3dg-dev, because dpkg would
++    barf when upgrading from versions of xaw3dg prior to that one, which
++    still contained the static library. [important]
++
++  * Updated for Policy 3.1. Converted to debhelper v2. Lintian clean.
++  * Removed Conflicts: and Replaces: xaw3d from xaw3dg, as libc6 version
++    does not replace functionality of libc5 version (theoretically that
++    doesn't even work).
++  * Did strip --strip-debug on the static library (through dh_strip),
++    reducing it by more than a half in size.
++  * Used upstream Imakefile/Makefile to install things (not for
++    libc5-compat, though), actually the only modified variable is $(INCDIR).
++    The difference is that three header files are removed - but those were
++    most probably extra anyway; and one .c file added - but it seems to be
++    on purpose.
++  * Made the libc5-compat Imakefile build only the shared library, as we
++    don't use the static one, to reduce build time.
++  * Made `clean' rule work all the time.
++  * Moved xaw3dg-dev to section devel and xaw3d to oldlibs.
++  * Moved Suggests: nextawg to xaw3dg package.
++  * Upgrade to new xaw-wrappers obsoletes xaw3d(g)'s xaw-wrappers files,
++    removed them now. Added Suggests: xaw-wrappers to library packages.
++  * Made -dev depend on the exact same version of library package.
++    Made -dev package's doc directory a symlink to library package's dir.
++  * Removed version from xlib6(g) dependency from the shlibs file... it
++    changes constantly in xlib6(g) itself, and dpkg-shlibdeps uses the
++    xlib6g's one anyway, so there's no point in using it.
++  * Unconditionally fixed lib/Xaw3d/XawI18n.h, to remove need for setting
++    -DDEBIAN through make cmdline flags.
++  * Changed backup tempfile location in postinsts from /etc to /var/run.
++  * Some s/3d/3D/ changes. Renamed debian.README to README.Debian.
++    Clarified descriptions in control and in xaw3dg postinst.
++
++ -- Josip Rodin <jrodin@jagor.srce.hr>  Sun, 30 Jan 2000 02:46:16 +0100
++
++xaw3d (1.3-6.7) unstable; urgency=low
++
++  * Non-maintainer upload
++  * Handle ld.so.conf properly in postrm as well
++  
++ -- Wichert Akkerman <wakkerma@debian.org>  Tue, 21 Dec 1999 23:54:45 +0100
++
++xaw3d (1.3-6.6) unstable; urgency=low
++
++  * Non-maintainer upload
++  * Handle ld.so.conf properly
++
++ -- Wichert Akkerman <wakkerma@debian.org>  Mon, 20 Dec 1999 13:31:44 +0100
++
++xaw3d (1.3-6.5) unstable; urgency=low
++
++  * Fixed shlibs to mention libxaw3d.  closes: #34357
++  * Noted bugs fixed in previous nmu's.
++      -dev pkg:  closes: #16719, #26056
++      copyright uncompressed:  closes: #14490
++      security fix:  closes: #21792
++  * Lintian 1.0 clean.
++
++ -- Adam Heath <doogie@debian.org>  Sun, 21 Mar 1999 22:16:26 -0600
++
++xaw3d (1.3-6.4) unstable; urgency=low
++
++  * Non-maintainer release at Joost's request.
++  * Added support for xaw3dg-dev package.
++  * Now xaw3d package is built only for the archs that support libc5.
++  * Corrected typos in copyright and in description.
++  * Copyright is now uncompressed.
++  * Files in /usr/doc are now compressed with -9.
++
++ -- Marco Pistore <pistore@di.unipi.it>  Sat,  9 Jan 1999 20:29:31 +0100
++
++xaw3d (1.3-6.3) frozen unstable; urgency=HIGH
++
++  * Applied xfree86's 24 May 98 patch to fix more buffer overflows (an
++    unfiled but still critical security bug).
++
++ -- Joey Hess <joeyh@master.debian.org>  Sat, 20 Jun 1998 13:15:32 -0700
++
++xaw3d (1.3-6.2) frozen unstable; urgency=HIGH
++
++  * Another NMU at Joost's request.
++  * Applied patch to fix buffer overflows (critical security bug #21792).
++    I actually applied XFree86's patch for X, using only the patch for
++    XawIm.c
++
++ -- Joey Hess <joeyh@master.debian.org>  Tue,  5 May 1998 12:07:59 -0700
++
++xaw3d (1.3-6.1) unstable; urgency=low
++
++  * Non-maintaner release, at Joost's request.
++  * Now builds xaw3dg package for libc6 version, xaw3d package for libc5
++    version.
++  * Updated shlibs file for libc6.
++  * Run ldconfig in postinst even if xaw3d was already in ld.so.conf.
++    (since old version may be libc5).
++  * Modified XawI18n.h not to include widec.h if DEBIAN is defined, and
++    define DEBIAN while building.
++  * Fixed file in /tmp security holes.
++
++ -- Joey Hess <joeyh@master.debian.org>  Fri,  3 Oct 1997 13:42:47 -0400
++
++xaw3d (1.3-6) unstable; urgency=low
++
++  * Corrected the "install" message
++  * now uses libc6
++  * included a shlibs file
++  * added xaw-wrappers file for axe
++  
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Sun,  3 Aug 1997 20:31:18 +0200
++
++xaw3d (1.3-5) unstable; urgency=low
++
++  * Compiled with -D_REENTRANT
++  * uses new, unreleased ld.so-1.8.9, so that the soname now can be 
++    libxaw3d, making everything somewhat easier.
++
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Sun, 9 Feb 1997 10:56:39 +0100
++
++xaw3d (1.3-4) unstable; urgency=low
++
++  * Copied Joey Hess' postinst and postrm scripts (from nextaw), and
++    removed the prerm script (why did I use a prerm script in the first place?)
++
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Fri, 7 Feb 1997 14:27:13 +0100
++
++xaw3d (1.3-3) unstable; urgency=low
++
++  * Added description of Joey Hess on how to install more Xaw replacements
++    libs on one system.
++
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Sat, 25 Jan 1997 22:22:07 +0100
++
++xaw3d (1.3-2) unstable; urgency=low
++
++  * Changed /sbin/ldconfig to ldconfig in postinst, prerm.
++  * Included changelog.Debian
++  * gzipped /usr/doc/xaw3d/*
++  
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Fri, 27 Dec 1996 19:12:04 +0100
++
++xaw3d (1.3-1) unstable; urgency=low
++  * Upgraded to upstream version (finally!)
++  * Converted to new source scheme.
++
++ -- joost witteveen <joost@rulcmc.leidenuniv.nl>  Sun, 8 Dec 1996 10:58:02 +0100
++
++Local variables:
++mode: debian-changelog
++End:
+diff -urN xc.org/debian/compat xc/debian/compat
+--- xc.org/debian/compat	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/compat	2009-01-22 17:59:49.648848414 +0100
+@@ -0,0 +1 @@
++5
+diff -urN xc.org/debian/control xc/debian/control
+--- xc.org/debian/control	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/control	2009-01-22 17:59:49.612848452 +0100
+@@ -0,0 +1,35 @@
++Source: xaw3d
++Section: x11
++Priority: optional
++Maintainer: Francesco Paolo Lovergine <frankie@debian.org>
++Build-Depends: debhelper (>= 5),xutils-dev (>= 1:1.0.2-3), libx11-dev, libxmu-dev, libxpm-dev, libxt-dev, x11proto-core-dev, x11proto-xext-dev, bison,flex-old|flex (>= 2.5.31-16), dpatch
++Standards-Version: 3.8.0
++
++Package: xaw3dg
++Architecture: any
++Depends: ${shlibs:Depends}
++Conflicts: axe (<< 6.1.2-2), xaw3d (<= 1.3-6), xfig (<< 1:3.2.4-rel-9), gv (<< 1:3.5.8-30.1)
++Description: Xaw3d widget set
++ Xaw3d is a set of 3-D widgets based on the Athena Widget set, which
++ adds a three dimensional appearance on some of the widgets of X11
++ applications linked with this library.
++ .
++ Please note that this package no longer adds a three dimensional
++ appearance on applications dynamically linked against libXaw.
++
++Package: xaw3dg-dev
++Section: devel
++Architecture: any
++Depends: xaw3dg (=${binary:Version}), xutils-dev, libx11-dev, libxmu-dev, libxpm-dev, libxt-dev, x11proto-core-dev, x11proto-xext-dev
++Conflicts: xaw3d-dev
++Replaces: xaw3dg (<< 1.5+E-16)
++Description: Xaw3d widget set development package
++ Xaw3d is a set of 3-D widgets based on the R6.1 Athena Widget set, which
++ adds a three dimensional appearance on some of the widgets of X11
++ applications linked with this library.
++ .
++ This is the development package (i.e. include files and static library)
++ of the xaw3dg library.
++
++
++
+diff -urN xc.org/debian/copyright xc/debian/copyright
+--- xc.org/debian/copyright	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/copyright	2009-01-22 17:59:49.652849442 +0100
+@@ -0,0 +1,32 @@
++This program was downloaded from: http://www.visi.com/~hawkeyd/xaw3d.html
++
++Authors:  D.J. Hawkey Jr. <hawkeyd@visi.com> (passed-away upstream)
++          Kaleb S. Keithley <kaleb@keithley.org> (previous upstream)
++
++This program is currently in unmaintained state, but for minimal patches
++applied by packager maintainers.
++
++Copyright (c) 1991, 1994  X Consortium
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in
++all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
++X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
++AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
++CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++
++Except as contained in this notice, the name of the X Consortium shall not be
++used in advertising or otherwise to promote the sale, use or other dealings
++in this Software without prior written authorization from the X Consortium.
++
++
+diff -urN xc.org/debian/patches/00list xc/debian/patches/00list
+--- xc.org/debian/patches/00list	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/patches/00list	2009-01-22 17:59:49.664848894 +0100
+@@ -0,0 +1,4 @@
++Imakefile
++SmeBSB.c
++Box.c
++MultiSrc.c
+diff -urN xc.org/debian/patches/Box.c.dpatch xc/debian/patches/Box.c.dpatch
+--- xc.org/debian/patches/Box.c.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/patches/Box.c.dpatch	2009-01-22 17:59:49.664848894 +0100
+@@ -0,0 +1,27 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## box.c.dpatch by Francesco Paolo Lovergine <frankie@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: No description.
++
++@DPATCH@
++diff -urNad xaw3d-1.5+E~/lib/Xaw3d/Box.c xaw3d-1.5+E/lib/Xaw3d/Box.c
++--- xaw3d-1.5+E~/lib/Xaw3d/Box.c	1996-10-15 16:41:18.000000000 +0200
+++++ xaw3d-1.5+E/lib/Xaw3d/Box.c	2007-04-24 15:28:39.000000000 +0200
++@@ -353,8 +353,16 @@
++ 	else {
++ 	    width = preferred_width;
++ 	    do { /* find some width big enough to stay within this height */
+++#if 0 
++ 		width *= 2;
++ 		if (width > constraint->width) width = constraint->width;
+++#endif
+++                if (width > constraint->width/2) {  /* avoid short int overflow */
+++ 		    width = constraint->width;
+++		}
+++                else { 
+++		    width *= 2; 
+++		}
++ 		DoLayout(w, width, 0, &preferred_width, &preferred_height, FALSE);
++ 	    } while (preferred_height > constraint->height &&
++ 		     width < constraint->width);
+diff -urN xc.org/debian/patches/Imakefile.dpatch xc/debian/patches/Imakefile.dpatch
+--- xc.org/debian/patches/Imakefile.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/patches/Imakefile.dpatch	2009-01-22 17:59:49.652849442 +0100
+@@ -0,0 +1,55 @@
++#!/bin/sh -e
++[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
++patch_opts="${patch_opts:--f --no-backup-if-mismatch}"
++                                                                                                                
++if [ $# -ne 1 ]; then
++echo >&2 "bash: script expects -patch|-unpatch as argument"
++    exit 1
++fi
++case "$1" in
++       -patch) patch $patch_opts -p1 < $0;;
++       -unpatch) patch $patch_opts -p1 -R < $0;;
++        *)
++                echo >&2 "bash: script expects -patch|-unpatch as argument"
++                exit 1;;
++esac
++                                                                                                                
++exit 0
++@DPATCH@
++diff -urNad /home/frankie/debian/mypkgs/xaw3d/xaw3d-1.5+E/lib/Xaw3d/Imakefile xaw3d-1.5+E/lib/Xaw3d/Imakefile
++--- /home/frankie/debian/mypkgs/xaw3d/xaw3d-1.5+E/lib/Xaw3d/Imakefile	2003-08-28 20:28:32.000000000 +0200
+++++ xaw3d-1.5+E/lib/Xaw3d/Imakefile	2003-08-28 20:37:21.000000000 +0200
++@@ -2,6 +2,9 @@
++ #define XCOMM #
++ #endif
++ 
+++# needed to get the right so-version with XFree4
+++SOXAWREV = 6.1
+++
++ XCOMM Build options. Have you read the README.XAW3D file yet?
++ XCOMM
++ XCOMM For color pixmaps, define MULTIPLANE_PIXMAPS:
++@@ -9,7 +12,7 @@
++ XCOMM For grayed stipple shadows, define GRAY_BLKWHT_STIPPLES:
++ #define GRAY_BLKWHT_STIPPLES
++ XCOMM For scrollbars with arrows, define ARROW_SCROLLBARS:
++-#undef ARROW_SCROLLBARS
+++#define ARROW_SCROLLBARS
++ 
++ #define DoNormalLib NormalLibXaw
++ #define DoSharedLib SharedLibXaw
++@@ -22,12 +25,13 @@
++ #define IncSubSubdir Xaw3d
++ 
++ XCOMM When building outside an X11 source tree:
++-XCOMM EXTRA_INCLUDES = -I.
+++EXTRA_INCLUDES = -I.
++ 
++ #ifdef SharedXawReqs
++ REQUIREDLIBS = SharedXawReqs
++ #endif
++ 
+++
++ LINTLIBS = $(LINTXLIB) $(LINTXTOOL)
++ 
++ BASE_HDRS = AllWidgets.h AsciiSink.h AsciiSinkP.h AsciiSrc.h AsciiSrcP.h \
+diff -urN xc.org/debian/patches/MultiSrc.c.dpatch xc/debian/patches/MultiSrc.c.dpatch
+--- xc.org/debian/patches/MultiSrc.c.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/patches/MultiSrc.c.dpatch	2009-01-22 17:59:49.664848894 +0100
+@@ -0,0 +1,18 @@
++#! /bin/sh /usr/share/dpatch/dpatch-run
++## MultiSrc.c.dpatch by Francesco Paolo Lovergine <frankie@debian.org>
++##
++## All lines beginning with `## DP:' are a description of the patch.
++## DP: No description.
++
++@DPATCH@
++diff -urNad xaw3d-1.5+E~/lib/Xaw3d/MultiSrc.c xaw3d-1.5+E/lib/Xaw3d/MultiSrc.c
++--- xaw3d-1.5+E~/lib/Xaw3d/MultiSrc.c	2006-01-09 08:30:52.000000000 +0100
+++++ xaw3d-1.5+E/lib/Xaw3d/MultiSrc.c	2008-07-24 11:16:52.000000000 +0200
++@@ -739,6 +739,7 @@
++   
++   if ( string_set || (old_src->multi_src.type != src->multi_src.type) ) {
++     RemoveOldStringOrFile(old_src, string_set);
+++    src->multi_src.allocated_string = old_src->multi_src.allocated_string;
++     file = InitStringOrFile(src, string_set);
++ 
++     /* Load pieces does this logic for us, but it shouldn't.  Its messy.*/
+diff -urN xc.org/debian/patches/SmeBSB.c.dpatch xc/debian/patches/SmeBSB.c.dpatch
+--- xc.org/debian/patches/SmeBSB.c.dpatch	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/patches/SmeBSB.c.dpatch	2009-01-22 17:59:49.664848894 +0100
+@@ -0,0 +1,107 @@
++#!/bin/sh -e
++[ -f debian/patches/00patch-opts ] && . debian/patches/00patch-opts
++patch_opts="${patch_opts:--f --no-backup-if-mismatch}"
++                                                                                                                
++if [ $# -ne 1 ]; then
++echo >&2 "bash: script expects -patch|-unpatch as argument"
++    exit 1
++fi
++case "$1" in
++       -patch) patch $patch_opts -p1 < $0;;
++       -unpatch) patch $patch_opts -p1 -R < $0;;
++        *)
++                echo >&2 "bash: script expects -patch|-unpatch as argument"
++                exit 1;;
++esac
++                                                                                                                
++exit 0
++@DPATCH@
++diff -urNad /home/frankie/debian/mypkgs/xaw3d/xaw3d-1.5e/lib/Xaw3d/SmeBSB.c xaw3d-1.5e/lib/Xaw3d/SmeBSB.c
++--- /home/frankie/debian/mypkgs/xaw3d/xaw3d-1.5e/lib/Xaw3d/SmeBSB.c	2003-08-04 17:27:58.000000000 +0200
+++++ xaw3d-1.5e/lib/Xaw3d/SmeBSB.c	2003-08-07 15:02:39.000000000 +0200
++@@ -52,6 +52,8 @@
++ #include <X11/Xaw3d/Cardinals.h>
++ #include <stdio.h>
++ 
+++#include "XawAlloc.h"
+++
++ /* needed for abs() */
++ #ifndef X_NOT_STDC_ENV
++ #include <stdlib.h>
++@@ -712,6 +714,8 @@
++     int x, y;
++     unsigned int width, height, bw;
++     char buf[BUFSIZ];
+++    char *pbuf;
+++    int len;
++     
++     if (is_left) {
++ 	width = height = 0;
++@@ -720,18 +724,24 @@
++ 	    if (!XGetGeometry(XtDisplayOfObject(w), 
++ 			    entry->sme_bsb.left_bitmap, &root, &x, &y,
++ 			    &width, &height, &bw, &entry->sme_bsb.left_depth)) {
++-		(void) sprintf(buf, "Xaw SmeBSB Object: %s %s \"%s\".",
++-			"Could not get Left Bitmap",
++-			"geometry information for menu entry",
++-			XtName(w));
++-		XtAppError(XtWidgetToApplicationContext(w), buf);
+++               char *err1 = "Xaw SmeBSB Object: Could not get Left Bitmap geometry information for menu entry ";
+++	       len = strlen(err1) + strlen(XtName(w)) + 3 + 1;
+++               pbuf = XtStackAlloc(len, buf);
+++               if (pbuf == NULL) return;
+++               sprintf(pbuf, "%s\"%s\".", err1, XtName(w));
+++               XtAppError(XtWidgetToApplicationContext(w), pbuf);
+++               XtStackFree(pbuf, buf);
++ 	    }
++ #ifdef NEVER
++ 	    if (entry->sme_bsb.left_depth != 1) {
++-		(void) sprintf(buf, "Xaw SmeBSB Object: %s \"%s\" %s.", 
++-			"Left Bitmap of entry",  XtName(w),
++-			"is not one bit deep");
++-		XtAppError(XtWidgetToApplicationContext(w), buf);
+++               char *err1 = "Xaw SmeBSB Object: Left Bitmap of entry ";
+++               char *err2 = " is not one bit deep.";
+++               len = strlen(err1) + strlen(err2) + strlen(XtName(w)) + 2 + 1;
+++               pbuf = XtStackAlloc(len, buf);
+++               if (pbuf == NULL) return;
+++               sprintf(pbuf, "%s\"%s\"%s", err1, XtName(w), err2);
+++               XtAppError(XtWidgetToApplicationContext(w), pbuf);
+++               XtStackFree(pbuf, buf);
++ 	    }
++ #endif
++ 	}
++@@ -745,18 +755,24 @@
++ 	    if (!XGetGeometry(XtDisplayOfObject(w),
++ 			    entry->sme_bsb.right_bitmap, &root, &x, &y,
++ 			    &width, &height, &bw, &entry->sme_bsb.right_depth)) {
++-		(void) sprintf(buf, "Xaw SmeBSB Object: %s %s \"%s\".",
++-			"Could not get Right Bitmap",
++-			"geometry information for menu entry",
++-			XtName(w));
++-		XtAppError(XtWidgetToApplicationContext(w), buf);
+++            char *err1 = "Xaw SmeBSB Object: Could not get Right Bitmap geometry information for menu entry ";
+++            len = strlen(err1) + strlen(XtName(w)) + 3 + 1;
+++            pbuf = XtStackAlloc(len, buf);
+++            if (pbuf == NULL) return;
+++            sprintf(pbuf, "%s\"%s\".", err1, XtName(w));
+++            XtAppError(XtWidgetToApplicationContext(w), pbuf);
+++            XtStackFree(pbuf, buf);
++ 	    }
++ #ifdef NEVER
++ 	    if (entry->sme_bsb.right_depth != 1) {
++-		(void) sprintf(buf, "Xaw SmeBSB Object: %s \"%s\" %s.", 
++-			"Right Bitmap of entry", XtName(w),
++-			"is not one bit deep");
++-		XtAppError(XtWidgetToApplicationContext(w), buf);
+++            char *err1 = "Xaw SmeBSB Object: Right Bitmap of entry ";
+++            char *err2 = " is not one bit deep.";
+++            len = strlen(err1) + strlen(err2) + strlen(XtName(w)) + 2 + 1;
+++            pbuf = XtStackAlloc(len, buf);
+++            if (pbuf == NULL) return;
+++            sprintf(pbuf, "%s\"%s\"%s", err1, XtName(w), err2);
+++            XtAppError(XtWidgetToApplicationContext(w), pbuf);
+++            XtStackFree(pbuf, buf);
++ 	    }
++ #endif
++ 	}
+diff -urN xc.org/debian/postinst xc/debian/postinst
+--- xc.org/debian/postinst	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/postinst	2009-01-22 17:59:49.648848414 +0100
+@@ -0,0 +1,10 @@
++#!/bin/sh -e
++
++case "$1" in
++        configure)
++		ldconfig
++        ;;
++esac
++
++
++#DEBHELPER#
+diff -urN xc.org/debian/README.Debian xc/debian/README.Debian
+--- xc.org/debian/README.Debian	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/README.Debian	2009-01-22 17:59:49.648848414 +0100
+@@ -0,0 +1,15 @@
++Xaw3D for Debian
++----------------
++
++Xaw3d is not a transparent substitute of libXaw for various
++incompatibilities. All programs which want a 3d look for Xaw
++toolkit, need to link explicitly against this library and manage
++minor problems properly.
++
++Some hacks have been applied to upstream sources. This library is currently 
++not maintained upstream.
++
++You can find other information about the beast in README.XAW3D.
++
++ -- Francesco P. Lovergine <frankie@debian.org>, Tue Apr 24 15:58:51 CEST 2007
++
+diff -urN xc.org/debian/rules xc/debian/rules
+--- xc.org/debian/rules	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/rules	2009-01-22 17:59:49.612848452 +0100
+@@ -0,0 +1,69 @@
++#!/usr/bin/make -f
++
++SHELL = /bin/bash
++PACKAGE = xaw3d
++
++#export DH_VERBOSE = 1
++
++include /usr/share/dpatch/dpatch.make
++
++ifneq (,$(findstring $(ARCH), $(COMPATARCHS)))
++#
++# Remove comment to enable libc5 compatibility.
++# You need also to use control.oldlib instead of the standard one.
++#COMPATSTUFF = yep
++#
++export DH_OPTIONS = -a
++else
++export DH_OPTIONS = -Nxaw3d -a
++endif
++
++SOURCE=lib/Xaw3d
++
++build: stamp-build
++stamp-build: patch-stamp
++	rm -rf $(SOURCE)/X11 && install -m755 -d $(SOURCE)/X11
++	cd $(SOURCE) && ln -sf ../ X11/Xaw3d && xmkmf
++	$(MAKE) -C $(SOURCE) \
++          EXTRA_DEFINES="-D_REENTRANT -DARROW_SCROLLBAR" SHLIBDEF="-D_REENTRANT -DARROW_SCROLLBAR"
++	touch $@
++
++clean: myclean unpatch
++myclean:
++	rm -rf $(SOURCE)/X11 $(COMPAT) lib/Xaw3d/laygram.h
++	cd $(SOURCE) && [ -f $(SOURCE)/Makefile ] || xmkmf
++	$(MAKE) -C $(SOURCE) clean
++	dh_clean stamp-build `find . -name Makefile`
++
++install: DH_OPTIONS=
++install: stamp-build
++	dh_testdir
++	dh_testroot
++	dh_clean -k
++
++	$(MAKE) -C $(SOURCE) install \
++                DESTDIR=$(CURDIR)/debian/tmp INCDIR=/usr/include
++
++binary: binary-indep binary-arch
++
++binary-indep:
++# There are no architecture-independent packages here.
++
++binary-arch: install
++	dh_testdir
++	dh_testroot
++	dh_install --source $(CURDIR)/debian/tmp
++	dh_installexamples $(SOURCE)/app-defaults
++	dh_installdocs $(SOURCE)/README.XAW3D 
++	dh_installchangelogs
++	dh_installdebconf
++	dh_strip
++	dh_compress
++	dh_fixperms
++	dh_installdeb
++	dh_shlibdeps
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++
++.PHONY:	build clean install binary binary-arch binary-indep unpatch myclean patch
+diff -urN xc.org/debian/shlibs xc/debian/shlibs
+--- xc.org/debian/shlibs	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/shlibs	2009-01-22 17:59:49.652849442 +0100
+@@ -0,0 +1 @@
++libXaw3d	6	xaw3dg (>= 1.5+E-1)
+diff -urN xc.org/debian/xaw3dg-dev.install xc/debian/xaw3dg-dev.install
+--- xc.org/debian/xaw3dg-dev.install	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/xaw3dg-dev.install	2009-01-22 17:59:49.652849442 +0100
+@@ -0,0 +1,3 @@
++usr/include/* usr/include
++usr/lib/*.a usr/lib
++usr/lib/*.so usr/lib
+diff -urN xc.org/debian/xaw3dg.install xc/debian/xaw3dg.install
+--- xc.org/debian/xaw3dg.install	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/xaw3dg.install	2009-01-22 17:59:49.652849442 +0100
+@@ -0,0 +1 @@
++usr/lib/*.so.* usr/lib
+diff -urN xc.org/debian/xaw3d.postinst xc/debian/xaw3d.postinst
+--- xc.org/debian/xaw3d.postinst	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/xaw3d.postinst	2009-01-22 17:59:49.612848452 +0100
+@@ -0,0 +1,19 @@
++#!/bin/sh -e
++#this script was written by Joey Hess
++
++XAWREPLDIR=/usr/lib/libc5-compat/Xaw3d
++LDSOCONF=/etc/ld.so.conf
++
++case "$1" in
++        configure)
++                tmpfile=`tempfile` || tmpfile=/var/run/`basename $0`.$$
++
++                if ! grep -q $XAWREPLDIR $LDSOCONF ; then 
++                        (echo $XAWREPLDIR; grep -v $XAWREPLDIR $LDSOCONF) >$tmpfile && \
++                                ( cat $tmpfile > $LDSOCONF ; rm -f $tmpfile )
++		fi
++		ldconfig
++        ;;
++esac
++
++#DEBHELPER#
+diff -urN xc.org/debian/xaw3d.postrm xc/debian/xaw3d.postrm
+--- xc.org/debian/xaw3d.postrm	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/xaw3d.postrm	2009-01-22 17:59:49.648848414 +0100
+@@ -0,0 +1,23 @@
++#! /bin/sh
++
++#this script was written by Joey Hess (slight mods by joost)
++
++set -e
++
++XAWREPLDIR=/usr/lib/libc5-compat/Xaw3d
++LDSOCONF=/etc/ld.so.conf
++
++case "$1" in
++        remove)
++                mkdir $XAWREPLDIR 2>/dev/null || true
++                ldconfig
++        ;;
++        purge)
++                tmpfile=`tempfile` || tmpfile=/etc/`basename $0`.$$
++                grep -v $XAWREPLDIR $LDSOCONF >$tmpfile && \
++						( cat $tmpfile > $LDSOCONF ; rm $tmpfile )
++                rmdir 2>/dev/null $XAWREPLDIR || true
++        ;;              
++esac
++
++#DEBHELPER#
+diff -urN xc.org/debian/xaw3d.shlibs xc/debian/xaw3d.shlibs
+--- xc.org/debian/xaw3d.shlibs	1970-01-01 01:00:00.000000000 +0100
++++ xc/debian/xaw3d.shlibs	2009-01-22 17:59:49.648848414 +0100
+@@ -0,0 +1,2 @@
++libXaw		6	xlib6
++libXaw3d	6	xaw3d (>= 1.5+E-1)
+diff -urN xc.org/lib/Xaw3d/AsciiSrc.c xc/lib/Xaw3d/AsciiSrc.c
+--- xc.org/lib/Xaw3d/AsciiSrc.c	2000-11-27 14:19:36.000000000 +0100
++++ xc/lib/Xaw3d/AsciiSrc.c	2009-01-22 17:59:49.592848829 +0100
+@@ -51,11 +51,17 @@
+ #include <X11/Xaw3d/MultiSrcP.h> 
+ #endif
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ #if (defined(ASCII_STRING) || defined(ASCII_DISK))
+ #  include <X11/Xaw3d/AsciiText.h> /* for Widget Classes. */
+ #endif
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ /****************************************************************
+  *
+@@ -1007,7 +1013,9 @@
+ AsciiSrcObject src;
+ Boolean newString;
+ {
+-    char * open_mode = NULL;
++    mode_t open_mode = 0;
++    const char *fdopen_mode = NULL;
++    int fd;
+     FILE * file;
+     char fileName[TMPSIZ];
+ 
+@@ -1049,7 +1057,8 @@
+ 	    XtErrorMsg("NoFile", "asciiSourceCreate", "XawError",
+ 		     "Creating a read only disk widget and no file specified.",
+ 		       NULL, 0);
+-	open_mode = "r";
++	open_mode = O_RDONLY;
++	fdopen_mode = "r";
+ 	break;
+     case XawtextAppend:
+     case XawtextEdit:
+@@ -1057,9 +1066,17 @@
+ 	    src->ascii_src.string = fileName;
+ 	    (void) tmpnam(src->ascii_src.string);
+ 	    src->ascii_src.is_tempfile = TRUE;
+-	    open_mode = "w";
+-	} else
+-	    open_mode = "r+";
++	    open_mode = O_WRONLY | O_CREAT | O_EXCL;
++	    fdopen_mode = "w";
++	} else {
++/* O_NOFOLLOW is a BSD & Linux extension */
++#ifdef O_NOFOLLOW
++		open_mode = O_RDWR | O_NOFOLLOW;
++#else
++		open_mode = O_RDWR; /* unsafe; subject to race conditions */
++#endif
++		fdopen_mode = "r+";
++	}
+ 	break;
+     default:
+ 	XtErrorMsg("badMode", "asciiSourceCreate", "XawError",
+@@ -1078,11 +1095,14 @@
+     }
+     
+     if (!src->ascii_src.is_tempfile) {
+-	if ((file = fopen(src->ascii_src.string, open_mode)) != 0) {
+-	    (void) fseek(file, (Off_t)0, 2);
+-	    src->ascii_src.length = (XawTextPosition) ftell(file);
+-	    return file;
+-	} else {
++	if ((fd = open(src->ascii_src.string, open_mode, 0666))) {
++	    if ((file = fdopen(fd, fdopen_mode)) != NULL) {
++		    (void)fseek(file, 0, SEEK_END);
++		    src->ascii_src.length = (XawTextPosition)ftell(file);
++		    return (file);
++	    }
++	}
++	{	    
+ 	    String params[2];
+ 	    Cardinal num_params = 2;
+ 	    
+@@ -1094,7 +1114,7 @@
+ 	}
+     } 
+     src->ascii_src.length = 0;
+-    return((FILE *)NULL);
++    return(NULL);
+ }
+ 
+ static void
+diff -urN xc.org/lib/Xaw3d/AsciiSrcP.h xc/lib/Xaw3d/AsciiSrcP.h
+--- xc.org/lib/Xaw3d/AsciiSrcP.h	1996-10-15 16:41:18.000000000 +0200
++++ xc/lib/Xaw3d/AsciiSrcP.h	2009-01-22 17:59:49.596893228 +0100
+@@ -85,7 +85,11 @@
+ #ifdef L_tmpnam
+ #define TMPSIZ L_tmpnam
+ #else
+-#define TMPSIZ 32		/* bytes to allocate for tmpnam */
++#ifdef PATH_MAX
++#define TMPSIZ PATH_MAX
++#else
++#define TMPSIZ 1024		/* bytes to allocate for tmpnam */
++#endif
+ #endif
+ 
+ #define MAGIC_VALUE ((XawTextPosition) -1) /* Magic value. */
+diff -urN xc.org/lib/Xaw3d/Box.c xc/lib/Xaw3d/Box.c
+--- xc.org/lib/Xaw3d/Box.c	1996-10-15 16:41:18.000000000 +0200
++++ xc/lib/Xaw3d/Box.c	2009-01-22 18:01:31.712849163 +0100
+@@ -353,8 +353,16 @@
+ 	else {
+ 	    width = preferred_width;
+ 	    do { /* find some width big enough to stay within this height */
++#if 0 
+ 		width *= 2;
+ 		if (width > constraint->width) width = constraint->width;
++#endif
++                if (width > constraint->width/2) {  /* avoid short int overflow */
++ 		    width = constraint->width;
++		}
++                else { 
++		    width *= 2; 
++		}
+ 		DoLayout(w, width, 0, &preferred_width, &preferred_height, FALSE);
+ 	    } while (preferred_height > constraint->height &&
+ 		     width < constraint->width);
+diff -urN xc.org/lib/Xaw3d/MenuButton.c xc/lib/Xaw3d/MenuButton.c
+--- xc.org/lib/Xaw3d/MenuButton.c	1996-10-15 16:41:20.000000000 +0200
++++ xc/lib/Xaw3d/MenuButton.c	2009-01-22 17:59:49.608848820 +0100
+@@ -53,6 +53,8 @@
+ #include <X11/Xaw3d/XawInit.h>
+ #include <X11/Xaw3d/MenuButtoP.h>
+ 
++#include "XawAlloc.h"
++
+ static void ClassInitialize();
+ static void PopupMenu();
+ 
+@@ -179,9 +181,16 @@
+ 
+   if (menu == NULL) {
+     char error_buf[BUFSIZ];
+-    (void) sprintf(error_buf, "MenuButton: %s %s.",
+-	    "Could not find menu widget named", mbw->menu_button.menu_name);
+-    XtAppWarning(XtWidgetToApplicationContext(w), error_buf);
++    char *err1 = "MenuButton: Could not find menu widget named ";
++    char *perr;
++    int len;
++
++    len = strlen(err1) + strlen(mbw->menu_button.menu_name) + 1 + 1;
++    perr = XtStackAlloc(len, error_buf);
++    if (perr == NULL) return;
++    sprintf(perr, "%s%s.", err1, mbw->menu_button.menu_name);
++    XtAppWarning(XtWidgetToApplicationContext(w), perr);
++    XtStackFree(perr, error_buf);
+     return;
+   }
+   if (!XtIsRealized(menu))
+diff -urN xc.org/lib/Xaw3d/MultiSrc.c xc/lib/Xaw3d/MultiSrc.c
+--- xc.org/lib/Xaw3d/MultiSrc.c	2000-11-27 14:19:36.000000000 +0100
++++ xc/lib/Xaw3d/MultiSrc.c	2009-01-22 18:01:36.644848876 +0100
+@@ -74,6 +74,9 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ 
+ /****************************************************************
+  *
+@@ -736,6 +739,7 @@
+   
+   if ( string_set || (old_src->multi_src.type != src->multi_src.type) ) {
+     RemoveOldStringOrFile(old_src, string_set);
++    src->multi_src.allocated_string = old_src->multi_src.allocated_string;
+     file = InitStringOrFile(src, string_set);
+ 
+     /* Load pieces does this logic for us, but it shouldn't.  Its messy.*/
+@@ -1076,7 +1080,9 @@
+     MultiSrcObject src;
+     Boolean newString;
+ {
+-    char * open_mode = NULL;
++    mode_t open_mode = 0;
++    const char *fdopen_mode = NULL;
++    int fd;
+     FILE * file;
+     char fileName[TMPSIZ];
+     Display *d = XtDisplayOfObject((Widget)src);
+@@ -1127,7 +1133,8 @@
+ 	    XtErrorMsg("NoFile", "multiSourceCreate", "XawError",
+ 		     "Creating a read only disk widget and no file specified.",
+ 		       NULL, 0);
+-	open_mode = "r";
++	open_mode = O_RDONLY;
++	fdopen_mode = "r";
+ 	break;
+     case XawtextAppend:
+     case XawtextEdit:
+@@ -1140,9 +1147,17 @@
+ 
+ 	    (void) tmpnam(src->multi_src.string);
+ 	    src->multi_src.is_tempfile = TRUE;
+-	    open_mode = "w";
+-	} else
+-	    open_mode = "r+";
++	    open_mode = O_WRONLY | O_CREAT | O_EXCL;
++	    fdopen_mode = "w";
++	} else {
++/* O_NOFOLLOW is a BSD & Linux extension */
++#ifdef O_NOFOLLOW 
++		open_mode = O_RDWR | O_NOFOLLOW;
++#else
++		open_mode = O_RDWR; /* unsafe; subject to race conditions */
++#endif
++		fdopen_mode = "r+";
++	}
+ 	break;
+     default:
+ 	XtErrorMsg("badMode", "multiSourceCreate", "XawError",
+@@ -1161,11 +1176,14 @@
+     }
+     
+     if (!src->multi_src.is_tempfile) {
+-	if ((file = fopen(src->multi_src.string, open_mode)) != 0) {
+-	    (void) fseek(file, (Off_t)0, 2);
+-            src->multi_src.length = ftell (file);
+-	    return file;
+-	} else {
++	if ((fd = open(src->multi_src.string, open_mode, 0666))) {
++		if ((file = fdopen(fd, fdopen_mode)) != NULL) {
++			(void)fseek(file, 0, SEEK_END);
++			src->multi_src.length = (XawTextPosition)ftell(file);
++			return (file);
++		}
++	}
++	{
+ 	    String params[2];
+ 	    Cardinal num_params = 2;
+ 	    
+@@ -1177,7 +1195,7 @@
+ 	}
+     } 
+     src->multi_src.length = 0;
+-    return((FILE *)NULL);
++    return(NULL);
+ #undef StrLen
+ }
+ 
+diff -urN xc.org/lib/Xaw3d/MultiSrcP.h xc/lib/Xaw3d/MultiSrcP.h
+--- xc.org/lib/Xaw3d/MultiSrcP.h	1996-10-15 16:41:21.000000000 +0200
++++ xc/lib/Xaw3d/MultiSrcP.h	2009-01-22 17:59:49.604848770 +0100
+@@ -113,7 +113,11 @@
+ #ifdef L_tmpnam
+ #define TMPSIZ L_tmpnam
+ #else
+-#define TMPSIZ 32		/* bytes to allocate for tmpnam */
++#ifdef PATH_MAX
++#define TMPSIZ PATH_MAX
++#else
++#define TMPSIZ 1024		/* bytes to allocate for tmpnam */
++#endif
+ #endif
+ 
+ #define MAGIC_VALUE ((XawTextPosition) -1) /* Magic value. */
+diff -urN xc.org/lib/Xaw3d/Scrollbar.c xc/lib/Xaw3d/Scrollbar.c
+--- xc.org/lib/Xaw3d/Scrollbar.c	2003-02-10 18:22:26.000000000 +0100
++++ xc/lib/Xaw3d/Scrollbar.c	2009-01-22 17:59:49.600847742 +0100
+@@ -1049,6 +1049,7 @@
+     if (!event->xmotion.same_screen) return;
+ 
+     ExtractPosition (event, &x, &y);
++    
+     loc = FractionLoc (sbw, x, y);
+     t = sbw->scrollbar.top;
+     s = sbw->scrollbar.shown;
+diff -urN xc.org/lib/Xaw3d/Simple.c xc/lib/Xaw3d/Simple.c
+--- xc.org/lib/Xaw3d/Simple.c	2000-11-27 14:19:36.000000000 +0100
++++ xc/lib/Xaw3d/Simple.c	2009-01-22 17:59:49.608848820 +0100
+@@ -56,6 +56,8 @@
+ #include <X11/Xaw3d/SimpleP.h>
+ #include <X11/Xmu/Drawing.h>
+ 
++#include "XawAlloc.h"
++
+ #define offset(field) XtOffsetOf(SimpleRec, simple.field)
+ 
+ static XtResource resources[] = {
+@@ -148,11 +150,17 @@
+ 
+     if (c->simple_class.change_sensitive == NULL) {
+ 	char buf[BUFSIZ];
+-
+-	(void) sprintf(buf,
+-		"%s Widget: The Simple Widget class method 'change_sensitive' is undefined.\nA function must be defined or inherited.",
+-		c->core_class.class_name);
+-	XtWarning(buf);
++	char *pbuf;
++	char *msg1 = " Widget: The Simple Widget class method 'change_sensitive' is undefined.\nA function must be defined or inherited.";
++	int len;
++
++	len = strlen(msg1) + strlen(c->core_class.class_name) + 1;
++	pbuf = XtStackAlloc(len, buf);
++	if (pbuf != NULL) {
++	    sprintf(pbuf, "%s%s", c->core_class.class_name, msg1);
++	    XtWarning(pbuf);
++	    XtStackFree(pbuf, buf);
++	}
+ 	c->simple_class.change_sensitive = ChangeSensitive;
+     }
+ 
+diff -urN xc.org/lib/Xaw3d/SimpleMenu.c xc/lib/Xaw3d/SimpleMenu.c
+--- xc.org/lib/Xaw3d/SimpleMenu.c	2003-02-17 07:45:07.000000000 +0100
++++ xc/lib/Xaw3d/SimpleMenu.c	2009-01-22 17:59:49.592848829 +0100
+@@ -51,6 +51,8 @@
+ #include <X11/Xmu/Initer.h>
+ #include <X11/Xmu/CharSet.h>
+ 
++#include "XawAlloc.h"
++
+ #define streq(a, b)        ( strcmp((a), (b)) == 0 )
+ 
+ #define offset(field) XtOffsetOf(SimpleMenuRec, simple_menu.field)
+@@ -755,9 +757,17 @@
+ 
+   if ( (menu = FindMenu(w, params[0])) == NULL) {
+     char error_buf[BUFSIZ];
+-    (void) sprintf(error_buf, "%s '%s'",
+-	    "Xaw - SimpleMenuWidget: could not find menu named: ", params[0]);
+-    XtAppWarning(XtWidgetToApplicationContext(w), error_buf);
++    char *err1 = "Xaw - SimpleMenuWidget: could not find menu named: ";
++    char *perr;
++    int len;
++
++    len = strlen(err1) + strlen(params[0]) + 2 + 1;
++    perr = XtStackAlloc(len, error_buf);
++    if (perr == NULL)
++	return;
++    sprintf(perr, "%s'%s'", err1, params[0]);
++    XtAppWarning(XtWidgetToApplicationContext(w), perr);
++    XtStackFree(perr, error_buf);
+     return;
+   }
+   
+diff -urN xc.org/lib/Xaw3d/SmeBSB.c xc/lib/Xaw3d/SmeBSB.c
+--- xc.org/lib/Xaw3d/SmeBSB.c	2003-02-16 20:18:28.000000000 +0100
++++ xc/lib/Xaw3d/SmeBSB.c	2009-01-22 18:01:39.716848434 +0100
+@@ -52,6 +52,8 @@
+ #include <X11/Xaw3d/Cardinals.h>
+ #include <stdio.h>
+ 
++#include "XawAlloc.h"
++
+ /* needed for abs() */
+ #ifndef X_NOT_STDC_ENV
+ #include <stdlib.h>
+@@ -712,6 +714,8 @@
+     int x, y;
+     unsigned int width, height, bw;
+     char buf[BUFSIZ];
++    char *pbuf;
++    int len;
+     
+     if (is_left) {
+ 	width = height = 0;
+@@ -720,18 +724,24 @@
+ 	    if (!XGetGeometry(XtDisplayOfObject(w), 
+ 			    entry->sme_bsb.left_bitmap, &root, &x, &y,
+ 			    &width, &height, &bw, &entry->sme_bsb.left_depth)) {
+-		(void) sprintf(buf, "Xaw SmeBSB Object: %s %s \"%s\".",
+-			"Could not get Left Bitmap",
+-			"geometry information for menu entry",
+-			XtName(w));
+-		XtAppError(XtWidgetToApplicationContext(w), buf);
++               char *err1 = "Xaw SmeBSB Object: Could not get Left Bitmap geometry information for menu entry ";
++	       len = strlen(err1) + strlen(XtName(w)) + 3 + 1;
++               pbuf = XtStackAlloc(len, buf);
++               if (pbuf == NULL) return;
++               sprintf(pbuf, "%s\"%s\".", err1, XtName(w));
++               XtAppError(XtWidgetToApplicationContext(w), pbuf);
++               XtStackFree(pbuf, buf);
+ 	    }
+ #ifdef NEVER
+ 	    if (entry->sme_bsb.left_depth != 1) {
+-		(void) sprintf(buf, "Xaw SmeBSB Object: %s \"%s\" %s.", 
+-			"Left Bitmap of entry",  XtName(w),
+-			"is not one bit deep");
+-		XtAppError(XtWidgetToApplicationContext(w), buf);
++               char *err1 = "Xaw SmeBSB Object: Left Bitmap of entry ";
++               char *err2 = " is not one bit deep.";
++               len = strlen(err1) + strlen(err2) + strlen(XtName(w)) + 2 + 1;
++               pbuf = XtStackAlloc(len, buf);
++               if (pbuf == NULL) return;
++               sprintf(pbuf, "%s\"%s\"%s", err1, XtName(w), err2);
++               XtAppError(XtWidgetToApplicationContext(w), pbuf);
++               XtStackFree(pbuf, buf);
+ 	    }
+ #endif
+ 	}
+@@ -745,18 +755,24 @@
+ 	    if (!XGetGeometry(XtDisplayOfObject(w),
+ 			    entry->sme_bsb.right_bitmap, &root, &x, &y,
+ 			    &width, &height, &bw, &entry->sme_bsb.right_depth)) {
+-		(void) sprintf(buf, "Xaw SmeBSB Object: %s %s \"%s\".",
+-			"Could not get Right Bitmap",
+-			"geometry information for menu entry",
+-			XtName(w));
+-		XtAppError(XtWidgetToApplicationContext(w), buf);
++            char *err1 = "Xaw SmeBSB Object: Could not get Right Bitmap geometry information for menu entry ";
++            len = strlen(err1) + strlen(XtName(w)) + 3 + 1;
++            pbuf = XtStackAlloc(len, buf);
++            if (pbuf == NULL) return;
++            sprintf(pbuf, "%s\"%s\".", err1, XtName(w));
++            XtAppError(XtWidgetToApplicationContext(w), pbuf);
++            XtStackFree(pbuf, buf);
+ 	    }
+ #ifdef NEVER
+ 	    if (entry->sme_bsb.right_depth != 1) {
+-		(void) sprintf(buf, "Xaw SmeBSB Object: %s \"%s\" %s.", 
+-			"Right Bitmap of entry", XtName(w),
+-			"is not one bit deep");
+-		XtAppError(XtWidgetToApplicationContext(w), buf);
++            char *err1 = "Xaw SmeBSB Object: Right Bitmap of entry ";
++            char *err2 = " is not one bit deep.";
++            len = strlen(err1) + strlen(err2) + strlen(XtName(w)) + 2 + 1;
++            pbuf = XtStackAlloc(len, buf);
++            if (pbuf == NULL) return;
++            sprintf(pbuf, "%s\"%s\"%s", err1, XtName(w), err2);
++            XtAppError(XtWidgetToApplicationContext(w), pbuf);
++            XtStackFree(pbuf, buf);
+ 	    }
+ #endif
+ 	}
+diff -urN xc.org/lib/Xaw3d/StripChart.c xc/lib/Xaw3d/StripChart.c
+--- xc.org/lib/Xaw3d/StripChart.c	2003-02-10 18:18:00.000000000 +0100
++++ xc/lib/Xaw3d/StripChart.c	2009-01-22 17:59:49.596893228 +0100
+@@ -315,7 +315,15 @@
+        if (w->strip_chart.points != NULL) {
+ 	   w->strip_chart.points[0].x = w->strip_chart.interval + s;
+ 	   XDrawPoints(XtDisplay(w), XtWindow(w), w->strip_chart.hiGC,
+-		       w->strip_chart.points, w->strip_chart.scale,
++		/*
++		 * patch:
++		 *
++		 *     w->strip_chart.points, w->strip_chart.scale,
++		 * 
++		 * this to avoid a subdle bug of extra spurios scan
++		 * line in this widget.
++		 */
++		       w->strip_chart.points, w->strip_chart.scale - 1, 
+ 		       CoordModePrevious);
+        }
+ 
+diff -urN xc.org/lib/Xaw3d/Text.c xc/lib/Xaw3d/Text.c
+--- xc.org/lib/Xaw3d/Text.c	2003-02-10 18:28:13.000000000 +0100
++++ xc/lib/Xaw3d/Text.c	2009-01-22 17:59:49.604848770 +0100
+@@ -75,6 +75,8 @@
+ #include <X11/Xfuncs.h>
+ #include <ctype.h>		/* for isprint() */
+ 
++#include "XawAlloc.h"
++
+ #ifndef MAX_LEN_CT
+ #define MAX_LEN_CT 6		/* for sequence: ESC $ ( A \xx \xx */
+ #endif
+@@ -520,6 +522,8 @@
+   TextWidget ctx = (TextWidget) new;
+   char error_buf[BUFSIZ];
+   int s;
++  char *perr; /* frankie */
++  size_t len; /* frankie */
+ 
+   ctx->text.threeD = XtVaCreateWidget("threeD", threeDWidgetClass, new,
+                                  XtNx, 0, XtNy, 0,
+@@ -568,10 +572,17 @@
+   if (ctx->text.scroll_vert != XawtextScrollNever) 
+     if ( (ctx->text.resize == XawtextResizeHeight) ||
+      	 (ctx->text.resize == XawtextResizeBoth) ) {
+-      (void) sprintf(error_buf, "Xaw Text Widget %s:\n %s %s.", ctx->core.name,
+-	      "Vertical scrolling not allowed with height resize.\n",
+-	      "Vertical scrolling has been DEACTIVATED.");
+-      XtAppWarning(XtWidgetToApplicationContext(new), error_buf);
++      char *err1 = "Xaw Text Widget ";
++      char *err2 = ":\nVertical scrolling not allowed with height resize.\n";
++      char *err3 = "Vertical scrolling has been DEACTIVATED.";
++      len = strlen(err1) + strlen(err2) + strlen(err3) +
++		strlen(ctx->core.name) + 1;
++      perr = XtStackAlloc(len, error_buf);
++      if (perr != NULL) {
++	(void) sprintf(perr, "%s%s%s%s", err1, ctx->core.name, err2, err3);
++	XtAppWarning(XtWidgetToApplicationContext(new), perr);
++	XtStackFree(perr, error_buf);
++      }
+       ctx->text.scroll_vert = XawtextScrollNever;
+     }
+     else if (ctx->text.scroll_vert == XawtextScrollAlways)
+@@ -579,18 +590,32 @@
+ 
+   if (ctx->text.scroll_horiz != XawtextScrollNever) 
+     if (ctx->text.wrap != XawtextWrapNever) {
+-      (void) sprintf(error_buf, "Xaw Text Widget %s:\n %s %s.", ctx->core.name,
+-	      "Horizontal scrolling not allowed with wrapping active.\n",
+-	      "Horizontal scrolling has been DEACTIVATED.");
+-      XtAppWarning(XtWidgetToApplicationContext(new), error_buf);
++      char *err1 = "Xaw Text Widget ";
++      char *err2 = ":\nHorizontal scrolling not allowed with wrapping active.";
++      char *err3 = "\nHorizontal scrolling has been DEACTIVATED.";
++      len = strlen(err1) + strlen(err2) + strlen(err3) +
++		strlen(ctx->core.name) + 1;
++      perr = XtStackAlloc(len, error_buf);
++      if (perr != NULL) {
++	(void) sprintf(perr, "%s%s%s%s", err1, ctx->core.name, err2, err3);
++	XtAppWarning(XtWidgetToApplicationContext(new), perr);
++	XtStackFree(perr, error_buf);
++      }
+       ctx->text.scroll_horiz = XawtextScrollNever;
+     }
+     else if ( (ctx->text.resize == XawtextResizeWidth) ||
+ 	      (ctx->text.resize == XawtextResizeBoth) ) {
+-      (void) sprintf(error_buf, "Xaw Text Widget %s:\n %s %s.", ctx->core.name,
+-	      "Horizontal scrolling not allowed with width resize.\n",
+-	      "Horizontal scrolling has been DEACTIVATED.");
+-      XtAppWarning(XtWidgetToApplicationContext(new), error_buf);
++      char *err1 = "Xaw Text Widget ";
++      char *err2 = ":\nHorizontal scrolling not allowed with width resize.\n";
++      char *err3 = "Horizontal scrolling has been DEACTIVATED.";
++      len = strlen(err1) + strlen(err2) + strlen(err3) +
++		strlen(ctx->core.name) + 1;
++      perr = XtStackAlloc(len, error_buf);
++      if (perr != NULL) {
++	(void) sprintf(perr, "%s%s%s%s", err1, ctx->core.name, err2, err3);
++	XtAppWarning(XtWidgetToApplicationContext(new), perr);
++	XtStackFree(perr, error_buf);
++      }
+       ctx->text.scroll_horiz = XawtextScrollNever;
+     }
+     else if (ctx->text.scroll_horiz == XawtextScrollAlways)
+diff -urN xc.org/lib/Xaw3d/TextPop.c xc/lib/Xaw3d/TextPop.c
+--- xc.org/lib/Xaw3d/TextPop.c	2000-11-27 14:19:36.000000000 +0100
++++ xc/lib/Xaw3d/TextPop.c	2009-01-22 17:59:49.600847742 +0100
+@@ -66,6 +66,8 @@
+ #include <X11/Xos.h>		/* for O_RDONLY */
+ #include <errno.h>
+ 
++#include "XawAlloc.h"
++
+ #ifdef X_NOT_STDC_ENV
+ extern int errno;
+ #endif
+@@ -809,6 +811,8 @@
+ struct SearchAndReplace * search;
+ {
+   char msg[BUFSIZ];
++  char *pmsg;
++  int len;
+   Widget tw = XtParent(search->search_popup);
+   XawTextPosition pos;
+   XawTextScanDirection dir;
+@@ -835,9 +839,20 @@
+    /* The Raw string in find.ptr may be WC I can't use here, so I re - call 
+    GetString to get a tame version. */
+ 
+-  if (pos == XawTextSearchError) 
+-    (void) sprintf( msg, "Could not find string ``%s''.", GetString( search->search_text ) );
+-  else {
++  if (pos == XawTextSearchError) {
++    char *msg1 = "Could not find string ``";
++    char *msg2 = "''.";
++    len = strlen(msg1) + strlen(msg2) +
++		strlen(GetString( search->search_text )) + 1;
++    pmsg = XtStackAlloc(len, msg);
++    if (pmsg != NULL) {
++      (void) sprintf( pmsg, "%s%s%s", msg1, GetString( search->search_text ),
++			msg2);
++    } else {
++      pmsg = msg;
++      (void) sprintf( pmsg, "Could not find string");
++    }
++  } else {
+     if (dir == XawsdRight)
+       XawTextSetInsertionPoint( tw, pos + text.length);
+     else
+@@ -849,7 +864,8 @@
+   }
+   
+   XawTextUnsetSelection(tw);
+-  SetSearchLabels(search, msg, "", TRUE);
++  SetSearchLabels(search, pmsg, "", TRUE);
++  XtStackFree(pmsg, msg);
+   return(FALSE);
+ }
+ 
+@@ -982,13 +998,26 @@
+       if ( (new_pos == XawTextSearchError) ) {
+ 	if (count == 0) {
+ 	  char msg[BUFSIZ];
++	  char *pmsg;
++	  int len;
++	  char *msg1 = "*** Error: Could not find string ``";
++	  char *msg2 = "''. ***";
+ 
+              /* The Raw string in find.ptr may be WC I can't use here, 
+ 		so I call GetString to get a tame version.*/
+ 
+-	  (void) sprintf( msg, "%s %s %s", "*** Error: Could not find string ``",
+-		  GetString( search->search_text ), "''. ***");
+-	  SetSearchLabels(search, msg, "", TRUE);
++	  len = strlen(msg1) + strlen(msg2) +
++		strlen(GetString( search->search_text )) + 1;
++	  pmsg = XtStackAlloc(len, msg);
++	  if (pmsg != NULL) {
++	    (void) sprintf( pmsg, "%s%s%s", msg1,
++				GetString( search->search_text ), msg2);
++	  } else {
++	    pmsg = msg;
++	    (void) sprintf(pmsg, "*** Error: Could not find string ***");
++	  }
++	  SetSearchLabels(search, pmsg, "", TRUE);
++	  XtStackFree(pmsg, msg);
+ 	  return(FALSE);
+ 	}
+ 	else
+@@ -1011,9 +1040,22 @@
+ 
+     if (XawTextReplace(tw, pos, end_pos, &replace) != XawEditDone) {
+       char msg[BUFSIZ];
+-      
+-      (void) sprintf( msg, "'%s' with '%s'. ***", find.ptr, replace.ptr);
++      char *pmsg;
++      int len;
++      char *msg1 = "' with '";
++      char *msg2 = "'. ***";
++
++      len = 1 + strlen(msg1) + strlen(msg2) + strlen(find.ptr) +
++		strlen(replace.ptr) + 1;
++      pmsg = XtStackAlloc(len, msg);
++      if (pmsg != NULL) {
++	(void) sprintf( pmsg, "`%s%s%s%s", find.ptr, msg1, replace.ptr, msg2);
++      } else {
++	pmsg = msg;
++	(void) sprintf(pmsg, "string ***");
++      }
+       SetSearchLabels(search, "*** Error while replacing", msg, TRUE);
++      XtStackFree(pmsg, msg);
+       return(FALSE);
+     }      
+ 
+@@ -1164,13 +1206,20 @@
+ {
+   Widget temp_widget;
+   char buf[BUFSIZ];
++  char *pbuf;
++  int len;
+ 
+-  (void) sprintf(buf, "%s.%s", FORM_NAME, name);
++  len = strlen(FORM_NAME) + strlen(name) + 2;
++  pbuf = XtStackAlloc(len, buf);
++  if (pbuf == NULL) return FALSE;
++  (void) sprintf(pbuf, "%s.%s", FORM_NAME, name);
+ 
+-  if ( (temp_widget = XtNameToWidget(shell, buf)) != NULL) {
++  if ( (temp_widget = XtNameToWidget(shell, pbuf)) != NULL) {
+     SetResource(temp_widget, res_name, value);
++    XtStackFree(pbuf, buf);
+     return(TRUE);
+   }
++  XtStackFree(pbuf, buf);
+   return(FALSE);
+ }
+ 
+diff -urN xc.org/lib/Xaw3d/XawAlloc.h xc/lib/Xaw3d/XawAlloc.h
+--- xc.org/lib/Xaw3d/XawAlloc.h	1970-01-01 01:00:00.000000000 +0100
++++ xc/lib/Xaw3d/XawAlloc.h	2009-01-22 17:59:49.608848820 +0100
+@@ -0,0 +1,10 @@
++/* $XFree86: xc/lib/Xaw/XawAlloc.h,v 1.1.2.1 1998/05/16 09:05:23 dawes Exp $ */
++
++#define XtStackAlloc(size, stack_cache_array)     \
++    ((size) <= sizeof(stack_cache_array)          \
++    ?  (XtPointer)(stack_cache_array)             \
++    :  XtMalloc((unsigned)(size)))
++     
++#define XtStackFree(pointer, stack_cache_array) \
++    if ((pointer) != ((XtPointer)(stack_cache_array))) XtFree(pointer); else
++
+diff -urN xc.org/lib/Xaw3d/XawI18n.h xc/lib/Xaw3d/XawI18n.h
+--- xc.org/lib/Xaw3d/XawI18n.h	1996-10-15 16:41:26.000000000 +0200
++++ xc/lib/Xaw3d/XawI18n.h	2009-01-22 17:59:49.608848820 +0100
+@@ -27,6 +27,8 @@
+ 
+ ********************************************************/
+ 
++/* Mod for Debian by Joey Hess, do not include widec.h */
++#if 0
+ #ifdef HAS_WCTYPE_H
+ #include <wctype.h>
+ #include <widec.h>
+@@ -34,6 +36,7 @@
+ #define wcscpy(d,s) wscpy(d,s)
+ #define wcsncpy(d,s,l) wsncpy(d,s,l)
+ #endif
++#endif /* 0 */
+ 
+ #ifdef HAS_WCHAR_H
+ #include <wchar.h>
+diff -urN xc.org/Xdefault xc/Xdefault
+--- xc.org/Xdefault	1970-01-01 01:00:00.000000000 +0100
++++ xc/Xdefault	2009-01-22 17:59:49.588848848 +0100
+@@ -0,0 +1,17 @@
++!this is an example of a .Xdefaults file to be used with the Xaw3d
++!widget set.
++
++!  To obtain an appearance similar to another well known widget set, use the 
++!  following resources:
++*background:        LightSkyBlue
++*shapeStyle:        Rectangle
++*beNiceToColormap:  False
++
++!  By default, Label widgets do not have shadows drawn for them.  You can
++!  force shadows to be drawn for specifying:
++*Label*shadowWidth: 2
++
++!If you'd like the default behavior (i.e. not 3-D) on pulldown menus, use:
++! (uncomment next line:)
++!*SmeBSB*shadowWidth: 0
++
