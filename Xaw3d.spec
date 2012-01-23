@@ -18,10 +18,12 @@ Source0:	http://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{versio
 URL:		http://www.freedesktop.org/
 BuildRequires:	bison
 BuildRequires:	flex
-BuildRequires:	xorg-cf-files
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
-BuildRequires:	xorg-util-imake
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	xorg-util-util-macros >= 1.8
 Requires:	fileutils
 Obsoletes:	libXaw3d7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -84,8 +86,11 @@ Summary(tr.UTF-8):	Xaw3d kitaplığını kullanan programlar geliştirmek için 
 Summary(uk.UTF-8):	Файли для розробки програм, які використовують Xaw3d
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	xorg-lib-libX11-devel
+Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXmu-devel
 Requires:	xorg-lib-libXpm-devel
+Requires:	xorg-lib-libXt-devel
 Obsoletes:	libXaw3d7-devel
 
 %description devel
@@ -199,7 +204,12 @@ Widget для X Window, придающая приложениям "трехме�
 %setup -q -n %{orgname}-%{version}
 
 %build
-%configure
+%configure \
+	--disable-silent-rules \
+	--enable-arrow-scrollbars \
+	--enable-gray-stipples \
+	--enable-internationalization \
+	--enable-multiplane-bitmaps
 
 %{__make}
 
@@ -211,7 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 
 ln -s X11/Xaw3d $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 
-rm $RPM_BUILD_ROOT%{_libdir}/libXaw3d.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libXaw3d.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -221,8 +231,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README ChangeLog
-%attr(755,root,root) %{_libdir}/libXaw3d.so.*.*
+%doc COPYING ChangeLog README
+%attr(755,root,root) %{_libdir}/libXaw3d.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libXaw3d.so.8
 
 %files devel
