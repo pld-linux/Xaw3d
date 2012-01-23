@@ -10,11 +10,12 @@ Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
 Version:	1.6
-Release:	2
+Release:	3
 License:	MIT
 Group:		X11/Libraries
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.bz2
 # Source0-md5:	db88f0c5afc5f285e046d84e15ad30de
+Patch0:		%{name}-git.patch
 URL:		http://www.freedesktop.org/
 BuildRequires:	bison
 BuildRequires:	flex
@@ -202,6 +203,7 @@ Widget для X Window, придающая приложениям "трехме�
 
 %prep
 %setup -q -n %{orgname}-%{version}
+%patch0 -p1
 
 %build
 %configure \
