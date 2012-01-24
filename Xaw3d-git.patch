@@ -205,3 +205,27 @@ index 6881670..5f54d14 100644
  #define	TIP_EVENT_MASK (ButtonPressMask	  |	\
  			ButtonReleaseMask |	\
  			PointerMotionMask |	\
+commit d50aaed45a5770d9f84fe94279d4fd49ff834b85
+Author: Matt Turner <mattst88@gmail.com>
+Date:   Mon Jan 23 15:04:21 2012 -0500
+
+    Include XAW3D_CPPFLAGS in xaw3d.pc Cflags
+    
+    Software depending on libXaw3d seems to require this.
+    
+    Fixes: https://bugs.freedesktop.org/show_bug.cgi?id=45144
+    
+    Reviewed-by: Gaetan Nadon <memsize@videotron.ca>
+    Signed-off-by: Matt Turner <mattst88@gmail.com>
+
+diff --git a/xaw3d.pc.in b/xaw3d.pc.in
+index b243c52..f53fca5 100644
+--- a/xaw3d.pc.in
++++ b/xaw3d.pc.in
+@@ -8,5 +8,5 @@ Description: X 3D Athena Widgets Library
+ Version: @PACKAGE_VERSION@
+ Requires: xproto xmu xt
+ Requires.private: x11 xext
+-Cflags: -I${includedir}
++Cflags: -I${includedir} @XAW3D_CPPFLAGS@
+ Libs: -L${libdir} -lXaw3d
