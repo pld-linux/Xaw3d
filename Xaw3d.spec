@@ -10,7 +10,7 @@ Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
 Version:	1.6
-Release:	3
+Release:	4
 License:	MIT
 Group:		X11/Libraries
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.bz2
@@ -230,6 +230,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+# migration from Xaw3d 1.5E (where X11/Xaw3d was symlink to ../Xaw3d)
+%pretrans devel
+if [ -d %{_includedir}/Xaw3d -a -L %{_includedir}/X11/Xaw3d ]; then
+	rm -f %{_includedir}/X11/Xaw3d
+	mv -f %{_includedir}/Xaw3d %{_includedir}/X11/Xaw3d
+	ln -snf X11/Xaw3d %{_includedir}/Xaw3d
+fi
 
 %files
 %defattr(644,root,root,755)
