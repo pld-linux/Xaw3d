@@ -9,13 +9,13 @@ Summary(ru.UTF-8):	Версия MIT Athena widget set для X
 Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
-Version:	1.6.2
-Release:	2
+Version:	1.6.3
+Release:	1
 License:	MIT
 Group:		X11/Libraries
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.bz2
-# Source0-md5:	b804b1eeba6008a1c11c767eb69f8b12
-URL:		http://www.freedesktop.org/
+Source0:	https://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.bz2
+# Source0-md5:	35b9296b8b2fccd4f46480c0afbd7f4f
+URL:		https://xorg.freedesktop.org/
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	xorg-lib-libX11-devel
@@ -223,6 +223,9 @@ ln -s X11/Xaw3d $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libXaw3d.la
 
+# packaged as %doc
+%{__rm} $RPM_BUILD_ROOT%{_docdir}/libXaw3d/README.XAW3D
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -239,7 +242,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog README
+%doc COPYING ChangeLog README src/README.XAW3D
 %attr(755,root,root) %{_libdir}/libXaw3d.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libXaw3d.so.8
 
