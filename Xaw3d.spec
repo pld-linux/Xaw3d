@@ -9,23 +9,25 @@ Summary(ru.UTF-8):	Версия MIT Athena widget set для X
 Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
-Version:	1.6.3
+Version:	1.6.4
 Release:	1
 License:	MIT
 Group:		X11/Libraries
-Source0:	https://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.bz2
-# Source0-md5:	35b9296b8b2fccd4f46480c0afbd7f4f
+Source0:	https://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.xz
+# Source0-md5:	ef452fd155740f879430945e8e7d93e7
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xorg-util-util-macros >= 1.8
+BuildRequires:	xz
 Requires:	fileutils
-Obsoletes:	libXaw3d7
+Obsoletes:	libXaw3d7 < 1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -91,7 +93,7 @@ Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXmu-devel
 Requires:	xorg-lib-libXpm-devel
 Requires:	xorg-lib-libXt-devel
-Obsoletes:	libXaw3d7-devel
+Obsoletes:	libXaw3d7-devel < 1.6
 
 %description devel
 Xaw3d is an enhanced version of the MIT Athena Widget set for X Window
@@ -219,7 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-ln -s X11/Xaw3d $RPM_BUILD_ROOT%{_includedir}/Xaw3d
+ln -sf X11/Xaw3d $RPM_BUILD_ROOT%{_includedir}/Xaw3d
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libXaw3d.la
 
@@ -242,7 +244,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING ChangeLog README src/README.XAW3D
+%doc COPYING ChangeLog README.md src/README.XAW3D
 %attr(755,root,root) %{_libdir}/libXaw3d.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libXaw3d.so.8
 
