@@ -9,12 +9,12 @@ Summary(ru.UTF-8):	Версия MIT Athena widget set для X
 Summary(tr.UTF-8):	3D X Athena arayüz elemanları (widgets)
 Summary(uk.UTF-8):	Версія MIT Athena widget set для X
 Name:		Xaw3d
-Version:	1.6.5
+Version:	1.6.6
 Release:	1
 License:	MIT
 Group:		X11/Libraries
 Source0:	https://xorg.freedesktop.org/releases/individual/lib/lib%{name}-%{version}.tar.xz
-# Source0-md5:	3fe32fc7e091a59a890d6e7c81d77445
+# Source0-md5:	411e44d066d8b2ca07619211124d7d02
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	bison
 BuildRequires:	flex
